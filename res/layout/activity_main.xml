@@ -1,0 +1,66 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fondo"
+    android:orientation="vertical" android:stretchColumns="1" >
+	
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+        
+        <ImageView
+            android:id="@+id/logo_izq"
+			android:contentDescription="@string/descripcion_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon"
+            android:layout_gravity="right" />
+
+        <TextView
+            android:id="@+id/titulo_ventana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_main"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+          	android:layout_gravity="center_vertical"
+          	android:gravity="center"
+          	android:textColor="#ffffff"  />
+			
+        <ImageView
+            android:id="@+id/logo_derecha"
+            android:contentDescription="@string/descripcion_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:src="@drawable/icon" />
+        
+    </TableRow>
+
+	<TextView
+	    android:id="@+id/titulo_play"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    android:text="@string/titulo_play"
+	    android:textAppearance="?android:attr/textAppearanceMedium"
+	    android:textColor="#ffffff" />
+		<TextView
+	    android:id="@+id/titulo_scores"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    android:text="@string/titulo_scores"
+	    android:textAppearance="?android:attr/textAppearanceMedium"
+	    android:textColor="#ffffff" />
+		<TextView
+		    android:id="@+id/titulo_settings"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:gravity="center"
+		    android:text="@string/titulo_settings"
+		    android:textAppearance="?android:attr/textAppearanceMedium"
+		    android:textColor="#ffffff" />
+
+</TableLayout>
