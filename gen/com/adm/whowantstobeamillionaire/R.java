@@ -21,28 +21,32 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int fondo=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int icon=0x7f020002;
+        public static final int back=0x7f020000;
+        public static final int button_opcion=0x7f020001;
+        public static final int button_opcion_selected=0x7f020002;
+        public static final int fondo=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int icon=0x7f020005;
     }
     public static final class id {
-        public static final int button1=0x7f08000e;
-        public static final int creditos=0x7f080010;
-        public static final int editText1=0x7f08000c;
-        public static final int editText2=0x7f08000f;
-        public static final int logo_derecha=0x7f080003;
-        public static final int logo_izq=0x7f080001;
-        public static final int spinner1=0x7f08000d;
-        public static final int tableRow1=0x7f080000;
-        public static final int textView1=0x7f080007;
-        public static final int textView2=0x7f080008;
-        public static final int textView21=0x7f080009;
-        public static final int textView22=0x7f08000a;
-        public static final int textView3=0x7f08000b;
-        public static final int titulo_play=0x7f080004;
-        public static final int titulo_scores=0x7f080005;
-        public static final int titulo_settings=0x7f080006;
-        public static final int titulo_ventana=0x7f080002;
+        public static final int button1=0x7f08000f;
+        public static final int buttonPlay=0x7f080000;
+        public static final int buttonScores=0x7f080001;
+        public static final int buttonSettings=0x7f080002;
+        public static final int creditos=0x7f080011;
+        public static final int editText1=0x7f08000d;
+        public static final int editText2=0x7f080010;
+        public static final int logo_derecha=0x7f08000c;
+        public static final int logo_izq=0x7f08000a;
+        public static final int spinner1=0x7f08000e;
+        public static final int tableRow1=0x7f080009;
+        public static final int textView1=0x7f080003;
+        public static final int textView2=0x7f080004;
+        public static final int textView21=0x7f080005;
+        public static final int textView22=0x7f080006;
+        public static final int textView3=0x7f080007;
+        public static final int textView4=0x7f080008;
+        public static final int titulo_ventana=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -101,5 +105,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        public static final int TextoConSombra=0x7f060002;
     }
 }

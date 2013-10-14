@@ -1,66 +1,40 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/fondo"
-    android:orientation="vertical" android:stretchColumns="1" >
-	
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-        
-        <ImageView
-            android:id="@+id/logo_izq"
-			android:contentDescription="@string/descripcion_logo"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/back">
+    
+     <Button
+            android:id="@+id/buttonPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:layout_gravity="right" />
-
-        <TextView
-            android:id="@+id/titulo_ventana"
+            android:background="@drawable/button_opcion"
+            android:textStyle="bold"
+            style="@style/TextoConSombra"
+            android:textColor="#FFFFFF"
+            android:text="@string/titulo_play"/>
+    
+    <Button
+            android:id="@+id/buttonScores"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/titulo_main"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-          	android:layout_gravity="center_vertical"
-          	android:gravity="center"
-          	android:textColor="#ffffff"  />
-			
-        <ImageView
-            android:id="@+id/logo_derecha"
-            android:contentDescription="@string/descripcion_logo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:gravity="right"
-            android:src="@drawable/icon" />
-        
-    </TableRow>
+            android:background="@drawable/button_opcion"
+            android:textStyle="bold"
+            style="@style/TextoConSombra"
+            android:textColor="#FFFFFF"
+            android:text="@string/titulo_scores"/>
+    
+    <Button
+            android:id="@+id/buttonSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_opcion"
+            android:textStyle="bold"
+            style="@style/TextoConSombra"
+            android:textColor="#FFFFFF"
+            android:text="@string/titulo_settings"
+            android:layout_gravity="center"/>
 
-	<TextView
-	    android:id="@+id/titulo_play"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:gravity="center"
-	    android:text="@string/titulo_play"
-	    android:textAppearance="?android:attr/textAppearanceMedium"
-	    android:textColor="#ffffff" />
-		<TextView
-	    android:id="@+id/titulo_scores"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:gravity="center"
-	    android:text="@string/titulo_scores"
-	    android:textAppearance="?android:attr/textAppearanceMedium"
-	    android:textColor="#ffffff" />
-		<TextView
-		    android:id="@+id/titulo_settings"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:gravity="center"
-		    android:text="@string/titulo_settings"
-		    android:textAppearance="?android:attr/textAppearanceMedium"
-		    android:textColor="#ffffff" />
-
-</TableLayout>
+</LinearLayout>
