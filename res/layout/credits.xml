@@ -5,17 +5,19 @@
     android:orientation="vertical"
     android:gravity="center"
     android:textStyle="bold"
-    style="@style/TextoConSombra">
+    style="@style/TextoConSombra"
+    android:layout_marginTop="5dp">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewAutores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/autor"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
-        style="@style/TextoConSombra"
-        android:textColor="#ffffff"  />
+        style="@style/TituloConSombra"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="20dp"  />
 
     <TextView
         android:id="@+id/textView2"
@@ -34,7 +36,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
         style="@style/TextoConSombra" 
-        android:textColor="#ffffff"  />
+        android:textColor="#ffffff"
+        android:layout_marginBottom="20dp"  />
 
 	<TextView
         android:id="@+id/textView22"
@@ -50,13 +53,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mail_victor"
-        android:textAppearance="?android:attr/textAppearanceMedium" 
-        android:textColor="#ffffff"  />  
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        style="@style/TextoConSombra" 
+        android:textColor="#ffffff"
+        android:layout_marginBottom="20dp"  />  
 	<TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/copyright"
-        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        style="@style/TextoConSombra" 
         android:textColor="#ffffff"  />
 </LinearLayout>

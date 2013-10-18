@@ -2,8 +2,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top"
     android:background="@drawable/back">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_main"
+        android:gravity="center"
+        style="@style/TituloConSombra"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:src="@drawable/main_logo"
+        android:contentDescription="@string/descripcion_main_logo" />
     
      <Button
             android:id="@+id/buttonPlay"
