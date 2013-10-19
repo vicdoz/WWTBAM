@@ -3,10 +3,19 @@
     android:layout_height="fill_parent"
     android:background="@drawable/back"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top|center"
     android:textStyle="bold"
-    style="@style/TextoConSombra"
-    android:layout_marginTop="5dp">
+    style="@style/TextoConSombra">
+    
+    <Button
+        android:id="@+id/buttonHeaderCreditos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header"
+        android:gravity="center|right"
+        style="@style/TituloConSombra" 
+        android:text="@string/menu_credits"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/textViewAutores"
@@ -20,7 +29,7 @@
         android:layout_marginBottom="20dp"  />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewNombreJosep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/autor_josep"
@@ -29,18 +38,18 @@
         style="@style/TextoConSombra" 
         android:textColor="#ffffff"  />
 	<TextView
-        android:id="@+id/textView21"
+        android:id="@+id/textViewEMailJosep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mail_josep"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold"
+        android:textStyle="italic"
         style="@style/TextoConSombra" 
         android:textColor="#ffffff"
         android:layout_marginBottom="20dp"  />
 
 	<TextView
-        android:id="@+id/textView22"
+        android:id="@+id/textViewNombreVictor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/autor_victor"
@@ -49,17 +58,17 @@
         style="@style/TextoConSombra"
         android:textColor="#ffffff"  />
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewEMailVictor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mail_victor"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold"
+        android:textStyle="italic"
         style="@style/TextoConSombra" 
         android:textColor="#ffffff"
         android:layout_marginBottom="20dp"  />  
 	<TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewCopyright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/copyright"

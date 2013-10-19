@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.adm.whowantstobeamillionaire.MainActivity"
-            android:label="@string/titulo_main" >
+            android:label="@string/titulo_millonario" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +25,18 @@
         <activity
             android:name="com.adm.whowantstobeamillionaire.CreditosActivity"
             android:label="@string/title_activity_creditos" >
+        </activity>
+        <activity
+            android:name="com.adm.whowantstobeamillionaire.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.adm.whowantstobeamillionaire.ScoresActivity"
+            android:label="@string/title_activity_scores" >
+        </activity>
+        <activity
+            android:name="com.adm.whowantstobeamillionaire.PlayActivity"
+            android:label="@string/title_activity_play" >
         </activity>
     </application>
 

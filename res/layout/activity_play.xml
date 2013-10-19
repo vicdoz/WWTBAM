@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/back" >
+    
+    <Button
+        android:id="@+id/buttonHeaderPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header"
+        android:gravity="center|right"
+        style="@style/TituloConSombra" 
+        android:text="@string/titulo_question" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_playing_for"
+            style="@style/TextoConSombra"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_current"
+            style="@style/TituloConSombra"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_millonario"
+        style="@style/TextoConSombra"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom|center" >
+
+        <Button
+            android:id="@+id/buttonOpcionA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_opcion_a"
+            style="@style/TextoConSombra"
+            android:textStyle="bold"
+            android:background="@drawable/button_opcion"/>
+        
+        <Button
+            android:id="@+id/buttonOpcionB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_opcion_b"
+            style="@style/TextoConSombra"
+            android:textStyle="bold"
+            android:background="@drawable/button_opcion"/>
+        
+        <Button
+            android:id="@+id/buttonOpcionC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_opcion_c"
+            style="@style/TextoConSombra"
+            android:textStyle="bold"
+            android:background="@drawable/button_opcion"/>
+        
+        <Button
+            android:id="@+id/buttonOpcionD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_opcion_d"
+            style="@style/TextoConSombra"
+            android:textStyle="bold"
+            android:background="@drawable/button_opcion"/>
+
+    </LinearLayout>
+
+</LinearLayout>

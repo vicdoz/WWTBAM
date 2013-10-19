@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/back" >
+ 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            
+            <TextView
+		        android:id="@+id/textView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/titulo_main"
+		        android:gravity="center"
+		        style="@style/TituloConSombra"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/main_logo"
+                android:contentDescription="@string/descripcion_main_logo"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            
+            <Button
+	            android:id="@+id/buttonPlay"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/button_opcion"
+	            android:textStyle="bold"
+	            style="@style/TextoConSombra"
+	            android:textColor="#FFFFFF"
+	            android:text="@string/titulo_play"/>
+		    
+		    <Button
+	            android:id="@+id/buttonScores"
+	            android:clickable="true"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/button_opcion"
+	            android:textStyle="bold"
+	            style="@style/TextoConSombra"
+	            android:textColor="#FFFFFF"
+	            android:text="@string/titulo_scores"/>
+		    
+		    <Button
+	            android:id="@+id/buttonSettings"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/button_opcion"
+	            android:textStyle="bold"
+	            style="@style/TextoConSombra"
+	            android:textColor="#FFFFFF"
+	            android:text="@string/titulo_settings"
+	            android:layout_gravity="center"/>	
+        </LinearLayout>
+
+
+</LinearLayout>

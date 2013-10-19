@@ -21,6 +21,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		this.setTitle("Millionaire");
+		
 		setContentView(R.layout.activity_main);
 		
 		playButton = (Button)findViewById(R.id.buttonPlay);
@@ -45,21 +47,33 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
+	
+
+	// LISTENERS
+	
+	
+	
 	View.OnClickListener handlerButtonPlay = new View.OnClickListener() {
 	    public void onClick(View v) {
 	    	playButton.setBackgroundResource(R.drawable.button_opcion_selected);
+	    	playButton.postDelayed(swapSelectedPlay, 500);
+	    	startActivity(new Intent(MainActivity.this, PlayActivity.class));
 	    }
 	};
 	
 	View.OnClickListener handlerButtonScores = new View.OnClickListener() {
 	    public void onClick(View v) {
 	    	scoresButton.setBackgroundResource(R.drawable.button_opcion_selected);
+	    	startActivity(new Intent(MainActivity.this, ScoresActivity.class));
+	    	scoresButton.postDelayed(swapSelectedScores, 500);
 	    }
 	};
 
 	View.OnClickListener handlerButtonSettings = new View.OnClickListener() {
 	    public void onClick(View v) {
 	    	settingsButton.setBackgroundResource(R.drawable.button_opcion_selected);
+	    	startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+	    	settingsButton.postDelayed(swapSelectedSettings, 500);
 	    }
 	};
 	
@@ -70,6 +84,35 @@ public class MainActivity extends Activity {
 			return false;
 		}
 	};
+	
+	
+	
+	// RUNABLES
+	
+	
+	
+	Runnable swapSelectedPlay = new Runnable() {
+	    @Override
+	    public void run() {
+	        playButton.setBackgroundResource(R.drawable.button_opcion);
+	    }
+	};
+	
+	Runnable swapSelectedScores= new Runnable() {
+	    @Override
+	    public void run() {
+	        scoresButton.setBackgroundResource(R.drawable.button_opcion);
+	    }
+	};
+	
+	Runnable swapSelectedSettings = new Runnable() {
+	    @Override
+	    public void run() {
+	        settingsButton.setBackgroundResource(R.drawable.button_opcion);
+	    }
+	};
+	
+	
 
 
 }

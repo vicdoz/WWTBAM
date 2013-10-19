@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menuItemPhone"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/play_item_phone"/>
+    
+    <item
+        android:id="@+id/menuItem50"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/play_item_50"/>
+    
+    <item
+        android:id="@+id/menuItemAudience"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/play_item_audience"/>
+    
+    <item
+        android:id="@+id/menuItemEnd"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/play_item_end"/>
+
+</menu>
