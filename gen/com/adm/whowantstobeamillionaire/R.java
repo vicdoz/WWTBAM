@@ -9,9 +9,20 @@ package com.adm.whowantstobeamillionaire;
 
 public final class R {
     public static final class array {
-        public static final int array_ayudas=0x7f060000;
+        public static final int array_ayudas=0x7f070000;
     }
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarButtonStyle=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarStyle=0x7f010000;
+    }
+    public static final class color {
+        public static final int black_overlay=0x7f040000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -20,8 +31,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int back=0x7f020000;
@@ -35,45 +46,50 @@ public final class R {
         public static final int main_logo=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090021;
-        public static final int button1=0x7f090020;
-        public static final int button2=0x7f09001a;
-        public static final int buttonHeaderCreditos=0x7f090000;
-        public static final int buttonHeaderPlay=0x7f09000d;
-        public static final int buttonHeaderSettings=0x7f090014;
-        public static final int buttonOpcionA=0x7f090010;
-        public static final int buttonOpcionB=0x7f090011;
-        public static final int buttonOpcionC=0x7f090012;
-        public static final int buttonOpcionD=0x7f090013;
-        public static final int buttonPlay=0x7f090009;
-        public static final int buttonScores=0x7f09000a;
-        public static final int buttonSettings=0x7f09000b;
-        public static final int creditosMenuItem=0x7f090022;
-        public static final int editText1=0x7f090017;
-        public static final int editText2=0x7f09001b;
-        public static final int imageView1=0x7f09000c;
-        public static final int imageViewLogo=0x7f090008;
-        public static final int menuItem50=0x7f090024;
-        public static final int menuItemAudience=0x7f090025;
-        public static final int menuItemEnd=0x7f090026;
-        public static final int menuItemPhone=0x7f090023;
-        public static final int spinner1=0x7f09001f;
-        public static final int spinnerAyudas=0x7f090019;
-        public static final int tabFriends=0x7f090016;
-        public static final int tabLocal=0x7f090015;
-        public static final int textView1=0x7f090007;
-        public static final int textView2=0x7f09000e;
-        public static final int textView21=0x7f09001c;
-        public static final int textView22=0x7f09001d;
-        public static final int textView3=0x7f09000f;
-        public static final int textView4=0x7f09001e;
-        public static final int textViewAutores=0x7f090001;
-        public static final int textViewAyudas=0x7f090018;
-        public static final int textViewCopyright=0x7f090006;
-        public static final int textViewEMailJosep=0x7f090003;
-        public static final int textViewEMailVictor=0x7f090005;
-        public static final int textViewNombreJosep=0x7f090002;
-        public static final int textViewNombreVictor=0x7f090004;
+        public static final int action_settings=0x7f0a0026;
+        public static final int button1=0x7f0a0025;
+        public static final int button2=0x7f0a001d;
+        public static final int buttonHeaderCreditos=0x7f0a0000;
+        public static final int buttonHeaderPlay=0x7f0a000d;
+        public static final int buttonHeaderSettings=0x7f0a0017;
+        public static final int buttonOpcionA=0x7f0a0011;
+        public static final int buttonOpcionB=0x7f0a0012;
+        public static final int buttonOpcionC=0x7f0a0013;
+        public static final int buttonOpcionD=0x7f0a0014;
+        public static final int buttonPlay=0x7f0a0009;
+        public static final int buttonScores=0x7f0a000a;
+        public static final int buttonSettings=0x7f0a000b;
+        public static final int creditosMenuItem=0x7f0a0027;
+        public static final int editText1=0x7f0a001a;
+        public static final int editText2=0x7f0a001e;
+        public static final int imageView1=0x7f0a000c;
+        public static final int imageViewLogo=0x7f0a0008;
+        public static final int menuItem50=0x7f0a0029;
+        public static final int menuItemAudience=0x7f0a002a;
+        public static final int menuItemEnd=0x7f0a002b;
+        public static final int menuItemPhone=0x7f0a0028;
+        public static final int spinner1=0x7f0a0024;
+        public static final int spinnerAyudas=0x7f0a001c;
+        public static final int tabFriends=0x7f0a0019;
+        public static final int tabLocal=0x7f0a0018;
+        public static final int tableRow1=0x7f0a0015;
+        public static final int tableRow2=0x7f0a0016;
+        public static final int textView1=0x7f0a0007;
+        public static final int textView2=0x7f0a001f;
+        public static final int textView21=0x7f0a0020;
+        public static final int textView22=0x7f0a0021;
+        public static final int textView3=0x7f0a0022;
+        public static final int textView4=0x7f0a0023;
+        public static final int textViewAutores=0x7f0a0001;
+        public static final int textViewAyudas=0x7f0a001b;
+        public static final int textViewCopyright=0x7f0a0006;
+        public static final int textViewEMailJosep=0x7f0a0003;
+        public static final int textViewEMailVictor=0x7f0a0005;
+        public static final int textViewMoney=0x7f0a000f;
+        public static final int textViewNombreJosep=0x7f0a0002;
+        public static final int textViewNombreVictor=0x7f0a0004;
+        public static final int textViewPlayingFor=0x7f0a000e;
+        public static final int textViewQuestion=0x7f0a0010;
     }
     public static final class layout {
         public static final int activity_creditos=0x7f030000;
@@ -87,65 +103,71 @@ public final class R {
         public static final int settings=0x7f030008;
     }
     public static final class menu {
-        public static final int creditos=0x7f080000;
-        public static final int main=0x7f080001;
-        public static final int play=0x7f080002;
-        public static final int scores=0x7f080003;
-        public static final int settings=0x7f080004;
+        public static final int creditos=0x7f090000;
+        public static final int main=0x7f090001;
+        public static final int play=0x7f090002;
+        public static final int scores=0x7f090003;
+        public static final int settings=0x7f090004;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int add_friend_settings=0x7f050014;
-        public static final int app_name=0x7f050000;
-        public static final int autor=0x7f05000c;
-        public static final int autor_josep=0x7f05000e;
-        public static final int autor_victor=0x7f05000d;
-        public static final int copyright=0x7f050011;
-        public static final int descripcion_header=0x7f05000a;
-        public static final int descripcion_logo=0x7f050009;
-        public static final int descripcion_main_logo=0x7f050015;
-        public static final int hello_world=0x7f050002;
-        public static final int jugadores_settings=0x7f050013;
-        public static final int mail_josep=0x7f050010;
-        public static final int mail_victor=0x7f05000f;
-        public static final int menu_credits=0x7f05000b;
-        public static final int name_settings=0x7f050012;
-        public static final int play_current=0x7f05001b;
-        public static final int play_item_50=0x7f050021;
-        public static final int play_item_audience=0x7f050022;
-        public static final int play_item_end=0x7f050023;
-        public static final int play_item_phone=0x7f050020;
-        public static final int play_opcion_a=0x7f05001c;
-        public static final int play_opcion_b=0x7f05001d;
-        public static final int play_opcion_c=0x7f05001e;
-        public static final int play_opcion_d=0x7f05001f;
-        public static final int play_playing_for=0x7f05001a;
-        public static final int tab_friends=0x7f050019;
-        public static final int tab_local=0x7f050018;
-        public static final int title_activity_creditos=0x7f050016;
-        public static final int title_activity_play=0x7f050025;
-        public static final int title_activity_scores=0x7f050024;
-        public static final int title_activity_settings=0x7f050017;
-        public static final int titulo_main=0x7f050003;
-        public static final int titulo_millonario=0x7f050007;
-        public static final int titulo_play=0x7f050004;
-        public static final int titulo_question=0x7f050008;
-        public static final int titulo_scores=0x7f050005;
-        public static final int titulo_settings=0x7f050006;
+        public static final int action_settings=0x7f060001;
+        public static final int add_friend_settings=0x7f060014;
+        public static final int app_name=0x7f060000;
+        public static final int autor=0x7f06000c;
+        public static final int autor_josep=0x7f06000e;
+        public static final int autor_victor=0x7f06000d;
+        public static final int copyright=0x7f060011;
+        public static final int descripcion_header=0x7f06000a;
+        public static final int descripcion_logo=0x7f060009;
+        public static final int descripcion_main_logo=0x7f060015;
+        public static final int dummy_button=0x7f060027;
+        public static final int dummy_content=0x7f060028;
+        public static final int hello_world=0x7f060002;
+        public static final int jugadores_settings=0x7f060013;
+        public static final int mail_josep=0x7f060010;
+        public static final int mail_victor=0x7f06000f;
+        public static final int menu_credits=0x7f06000b;
+        public static final int name_settings=0x7f060012;
+        public static final int play_current=0x7f06001b;
+        public static final int play_item_50=0x7f060021;
+        public static final int play_item_audience=0x7f060022;
+        public static final int play_item_end=0x7f060023;
+        public static final int play_item_phone=0x7f060020;
+        public static final int play_opcion_a=0x7f06001c;
+        public static final int play_opcion_b=0x7f06001d;
+        public static final int play_opcion_c=0x7f06001e;
+        public static final int play_opcion_d=0x7f06001f;
+        public static final int play_playing_for=0x7f06001a;
+        public static final int tab_friends=0x7f060019;
+        public static final int tab_local=0x7f060018;
+        public static final int title_activity_creditos=0x7f060016;
+        public static final int title_activity_fullscreen_play=0x7f060026;
+        public static final int title_activity_play=0x7f060025;
+        public static final int title_activity_scores=0x7f060024;
+        public static final int title_activity_settings=0x7f060017;
+        public static final int titulo_main=0x7f060003;
+        public static final int titulo_millonario=0x7f060007;
+        public static final int titulo_play=0x7f060004;
+        public static final int titulo_question=0x7f060008;
+        public static final int titulo_scores=0x7f060005;
+        public static final int titulo_settings=0x7f060006;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
+
     
  API 11 theme customizations can go here. 
 
@@ -155,12 +177,58 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
-        public static final int TextoConSombra=0x7f070002;
-        public static final int TituloConSombra=0x7f070003;
+        public static final int AppTheme=0x7f080001;
+        public static final int ButtonBar=0x7f080005;
+        public static final int ButtonBarButton=0x7f080006;
+        public static final int FullscreenActionBarStyle=0x7f080007;
+        public static final int FullscreenTheme=0x7f080004;
+        public static final int TextoConSombra=0x7f080002;
+        public static final int TituloConSombra=0x7f080003;
     }
+    public static final class styleable {
+        /** 
+         Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels.
+    
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarButtonStyle com.adm.whowantstobeamillionaire:buttonBarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarStyle com.adm.whowantstobeamillionaire:buttonBarStyle}</code></td><td></td></tr>
+           </table>
+           @see #ButtonBarContainerTheme_buttonBarButtonStyle
+           @see #ButtonBarContainerTheme_buttonBarStyle
+         */
+        public static final int[] ButtonBarContainerTheme = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.adm.whowantstobeamillionaire.R.attr#buttonBarButtonStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.adm.whowantstobeamillionaire:buttonBarButtonStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.adm.whowantstobeamillionaire.R.attr#buttonBarStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.adm.whowantstobeamillionaire:buttonBarStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
+    };
 }

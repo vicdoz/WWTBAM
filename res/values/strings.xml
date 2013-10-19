@@ -27,7 +27,6 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="tab_local">Local</string>
     <string name="tab_friends">Amigos</string>
-    
     <string name="play_playing_for">"Jugando por: "</string>
     <string name="play_current">"100000€"</string>
     <string name="play_opcion_a">"A:"</string>
@@ -48,5 +47,8 @@
 
     <string name="title_activity_scores">ScoresActivity</string>
     <string name="title_activity_play">PlayActivity</string>
+    <string name="title_activity_fullscreen_play">FullscreenPlayActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
