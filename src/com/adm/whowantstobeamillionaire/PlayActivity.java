@@ -88,6 +88,7 @@ public class PlayActivity extends Activity {
 	            public void onClick(View v) {
 	            	if(correcta==1){
 						try {
+							actual++;
 							lectura_pregunta();
 						} catch (XmlPullParserException e) {
 							// TODO Auto-generated catch block
@@ -152,28 +153,27 @@ public class PlayActivity extends Activity {
 		        	//Si es que ha fallado se calcula la puntuacion en función de la pregunta.
 		        	String[] puntuaciones=getResources().getStringArray(R.array.arry_puntuaciones);
 		        	String aux;
-		        	int puntuacion;
+		        	int puntuacion=0;
 		        	if(actual-1>0){ 
 		        		aux=puntuaciones[actual-1];
 		        		 puntuacion=Integer.valueOf(aux);
 		        	}
 		        	
 		        	if(!retirarse){
-		        		switch(actual-1){
-				        	case 5:break;
-				        	case 10:break;
-				        	default:puntuacion=0;break;
-			        	}
+		        		if(actual-1<5)puntuacion=0;
+		        		else if(actual-1>=5 && actual-1<10)puntuacion=Integer.valueOf(puntuaciones[5]);
+		        		else if(actual-1>=10 && actual-1<15)puntuacion=Integer.valueOf(puntuaciones[10]);
+		        		else if(actual-1==15)puntuacion=Integer.valueOf(puntuaciones[15]);
 		        	}
 
 		        	
-		        	Database db=new Database();
-		        	db.crearDatabase(getApplicationContext());
+		        	MyHelper db=new MyHelper(getApplicationContext());
+		        	
 		        	SharedPreferences preferences =
 		        			getSharedPreferences("Settings", Context.MODE_PRIVATE);
-		        			String nombre=preferences.getString("nombre", "");
-		        	//db.insertarPuntuacion(nombre, puntuacion);
-		        	//Toast.makeText(getApplicationContext(), "Has fallado "+nombre+" puntuacion: "+puntuacion, Toast.LENGTH_LONG).show();		        	
+		        	String nombre=preferences.getString("nombre", "");
+		        	db.insertarPuntuacion(nombre, puntuacion);
+		        	Toast.makeText(getApplicationContext(), "Fin partida "+nombre+" puntuacion: "+puntuacion, Toast.LENGTH_LONG).show();		        	
 		        	//Borrado de preferencias
 		        	actual=1;
 		        	SharedPreferences settings = getApplicationContext().getSharedPreferences("var", Context.MODE_PRIVATE);
@@ -205,6 +205,33 @@ public class PlayActivity extends Activity {
 		
 		return true;
 	}
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+	    
+		menuItemPhone = menu.findItem(R.id.menuItemPhone);
+		menuItemPhone.setIcon(drawable.ic_menu_call);
+		menuItemPhone.setOnMenuItemClickListener(handlermenuItemPhone);
+		
+		menuItem50 = menu.findItem(R.id.menuItem50);
+		menuItem50.setIcon(drawable.ic_partial_secure);
+		menuItem50.setOnMenuItemClickListener(handlermenuItem50);
+		
+		menuItemAudience = menu.findItem(R.id.menuItemAudience);
+		menuItemAudience.setIcon(drawable.ic_menu_agenda);
+		menuItemAudience.setOnMenuItemClickListener(handlermenuItemAudience);	
+		
+		menuItemEnd = menu.findItem(R.id.menuItemEnd);
+		menuItemEnd.setIcon(drawable.ic_input_delete);
+		menuItemEnd.setOnMenuItemClickListener(handlermenuItemEnd);	
+		
+		if(!bUsadoTelef)menuItemPhone.setEnabled(true);
+		if(!bUsado50)menuItem50.setEnabled(true);
+		if(!bUsadoAudience)menuItemAudience.setEnabled(true);
+		
+	    return true;
+	}
+
+
 	OnMenuItemClickListener handlermenuItemPhone = new OnMenuItemClickListener() {
 		@Override
 		public boolean onMenuItemClick(MenuItem arg0) {
@@ -311,11 +338,11 @@ public class PlayActivity extends Activity {
 			eventType = parser.next();
 		}
 		inputStream.close();
-		if(actual!=1){
-		//	if(!bUsadoTelef)menuItemPhone.setEnabled(true);
-		//  if(!bUsado50)menuItem50.setEnabled(true);
-		//	if(!bUsadoAudience)menuItemAudience.setEnabled(true);
-		}
+//		if(actual!=1){
+//			if(!bUsadoTelef)menuItemPhone.setEnabled(true);
+//			if(!bUsado50)menuItem50.setEnabled(true);
+//			if(!bUsadoAudience)menuItemAudience.setEnabled(true);
+//		}
 		reinicio_fondos();
 	}	
 	private void reinicio_fondos(){
@@ -328,7 +355,7 @@ public class PlayActivity extends Activity {
 		opcionC.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
 		opcionD.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
 	}
-	public void restoreData() {
+	private void restoreData() {
 		SharedPreferences preferences =
 		getSharedPreferences("var", Context.MODE_PRIVATE);
 		actual=preferences.getInt("actual",1);
@@ -338,7 +365,7 @@ public class PlayActivity extends Activity {
 	}
 
 
-	public void saveData() {
+	private void saveData() {
 		SharedPreferences preferences =
 		getSharedPreferences("var", Context.MODE_PRIVATE);
 		Editor editor = preferences.edit();

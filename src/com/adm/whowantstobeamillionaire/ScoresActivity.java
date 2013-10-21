@@ -2,6 +2,8 @@ package com.adm.whowantstobeamillionaire;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -59,18 +61,8 @@ tabs.setCurrentTab(0);*/
 		ListView list = (ListView) findViewById(R.id.puntuaciones_lista);
 
 		ArrayList<HashMap<String, String>> listaPuntuaciones = new ArrayList<HashMap<String, String>>();
-		HashMap<String, String> map = new HashMap<String, String>();
-
-		//Ejemplo de como añadir
-		map = new HashMap<String, String>();          
-		map.put("Nombre", "victor");
-		map.put("score", "200");
-		listaPuntuaciones.add(map);
-		//Database db=new Database();
-		//map=db.leerPuntuaciones(this);
-		//listaPuntuaciones.add(map);
-		
-
+		MyHelper db=new MyHelper(getApplicationContext());
+		listaPuntuaciones=db.leerPuntuaciones(getApplicationContext());
 		SimpleAdapter adaptador = new SimpleAdapter(this, listaPuntuaciones, R.layout.puntuacion,
 		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
 		list.setAdapter(adaptador);
