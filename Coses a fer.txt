@@ -1,0 +1,3 @@
+-Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe seleccionar-lo en el menu de nou.
+-Ficar botó en la finestra score per a borrar puntuacions
+-Practica 4:Puntuacions online.
