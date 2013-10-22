@@ -33,6 +33,7 @@ public class MyHelper extends SQLiteOpenHelper {
 	 
 	        //Se crea la nueva versión de la tabla
 	        db.execSQL(sqlCreate);
+	        db.close();
 	    }
 	@Override
     public void onCreate(SQLiteDatabase db) {
@@ -57,7 +58,7 @@ public class MyHelper extends SQLiteOpenHelper {
 		String puntua;
 		SQLiteDatabase db = getReadableDatabase(); 
 		//Seleccionamos los datos que nos interesan:Nombre y puntuacion
-		Cursor c = db.rawQuery("select name,score from score ", null);    	
+		Cursor c = db.rawQuery("select name,score from score ORDER BY score  DESC ", null);    	
 		
 		if(c.moveToFirst()){ 	
 			if(c!=null){
@@ -78,5 +79,18 @@ public class MyHelper extends SQLiteOpenHelper {
 		c.close();
    		return listaPuntuaciones;
    	}
+    public void borrarPuntuaciones(Context context){
+    	//Borramos la tabla y la volvemos a crear.
+    	SQLiteDatabase db = getWritableDatabase(); 
+    	 db.execSQL("DROP TABLE IF EXISTS score");
+    	 db.execSQL(sqlCreate);
+    	 db.close();
+    }
+    public void crearBD(Context context){
+    	SQLiteDatabase db = getWritableDatabase(); 
+   	 	db.execSQL(sqlCreate);
+   	 	db.close();
+    }
+    
 
 }

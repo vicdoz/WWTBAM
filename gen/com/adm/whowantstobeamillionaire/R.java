@@ -48,6 +48,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main_logo=0x7f020009;
     }
     public static final class id {
+        public static final int MenuItemDeleteScore=0x7f0b0030;
         public static final int Nombre=0x7f0b0025;
         public static final int action_settings=0x7f0b002a;
         public static final int button1=0x7f0b0029;
@@ -128,6 +129,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int autor_josep=0x7f07000e;
         public static final int autor_victor=0x7f07000d;
         public static final int copyright=0x7f070011;
+        public static final int deleteScore=0x7f07002b;
         public static final int descripcion_header=0x7f07000a;
         public static final int descripcion_logo=0x7f070009;
         public static final int descripcion_main_logo=0x7f070015;

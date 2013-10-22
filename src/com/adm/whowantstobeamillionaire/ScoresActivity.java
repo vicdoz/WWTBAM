@@ -6,15 +6,19 @@ import java.util.Iterator;
 import java.util.Map;
 
 import android.os.Bundle;
+import android.R.drawable;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class ScoresActivity extends Activity {
 	
@@ -61,8 +65,7 @@ tabs.setCurrentTab(0);*/
 		ListView list = (ListView) findViewById(R.id.puntuaciones_lista);
 
 		ArrayList<HashMap<String, String>> listaPuntuaciones = new ArrayList<HashMap<String, String>>();
-		MyHelper db=new MyHelper(getApplicationContext());
-		listaPuntuaciones=db.leerPuntuaciones(getApplicationContext());
+		listaPuntuaciones=LeerPuntuacionesDB();
 		SimpleAdapter adaptador = new SimpleAdapter(this, listaPuntuaciones, R.layout.puntuacion,
 		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
 		list.setAdapter(adaptador);
@@ -70,12 +73,48 @@ tabs.setCurrentTab(0);*/
 	}
 
 	
+	private ArrayList<HashMap<String, String>> LeerPuntuacionesDB() {
+		MyHelper db=new MyHelper(getApplicationContext());
+		//Al crear la tabla ,solo se crea si no existe.Si existe no hace nada
+		db.crearBD(getApplicationContext());
+		return db.leerPuntuaciones(getApplicationContext());
+		
+	}
+
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.scores, menu);
+		MenuItem menuItemDeleteScore = menu.findItem(R.id.MenuItemDeleteScore);
+		menuItemDeleteScore.setIcon(drawable.ic_menu_call);
+		menuItemDeleteScore.setOnMenuItemClickListener(handleMenuItemDeleteScore);
 		return true;
 	}
+	OnMenuItemClickListener handleMenuItemDeleteScore = new OnMenuItemClickListener() {
+		@Override
+		public boolean onMenuItemClick(MenuItem arg0) {
+			borrarBaseDeDatos();
+			redibujarTablaPuntuaciones();
+			return true;
+		}
+
+		private void borrarBaseDeDatos() {
+			MyHelper db=new MyHelper(getApplicationContext());
+			db.borrarPuntuaciones(getApplicationContext());
+			db.close();
+		}
+
+		private void redibujarTablaPuntuaciones() {
+			// TODO Auto-generated method stub
+			ListView list = (ListView) findViewById(R.id.puntuaciones_lista);
+			ArrayList<HashMap<String, String>> listaVacia = new ArrayList<HashMap<String, String>>();
+			SimpleAdapter adaptador = new SimpleAdapter(getApplicationContext(), listaVacia, R.layout.puntuacion,
+			            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
+			list.setAdapter(adaptador);
+			
+		}
+	};
 	
 	
 }

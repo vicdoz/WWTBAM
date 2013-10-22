@@ -1,3 +1,25 @@
+A fer:
+
 -Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe seleccionar-lo en el menu de nou.
--Ficar botó en la finestra score per a borrar puntuacions
+-en layout-land color blanc de les preguntes
+-layout main centrar el ultim.
+-Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
+-Controlar idiomes
+-ficar botó per a elegir idioma
 -Practica 4:Puntuacions online.
+
+
+FET VICTOR 22/10:
+-Les puntuacions locals ixen en ordre tal como demana la practica (era modificar la sentencia SQL pe a fer un order by puntuacio).
+-Ficar botó en la finestra score per a borrar puntuacions(en menu):
+		Es borra la bd.
+		Es redibuixa la taula sense puntuacions.
+-Incluida llibreria gson per a la practica 4.
+-Afegit permis per a internet per a la practica 4.
+-Afegides clases HighScore  per a comparar les puntuacions.En local no les 
+ gaste ja que com les tinc a la base de dades  , les trac amb  una sql ja ordenades.
+ Nose si per a les dels amics fara falta. Si veus que es molta feina comparar les puntuacions,etc.. 
+ es crea un altra taula per als amics i es guarden , i ja es trau 
+ ordenat amb una sql. Per el tema de mes taules no es menos eficient ni res.Aixi q com vejes.
+ 
+	
