@@ -1,19 +1,22 @@
 A fer:
 
--Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe seleccionar-lo en el menu de nou.
--en layout-land color blanc de les preguntes
--layout main centrar el ultim.
--Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
--Controlar idiomes
--ficar botó per a elegir idioma
--Practica 4:Puntuacions online.
+- Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe seleccionar-lo en el menu de nou.
+- Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
+- Controlar idiomes
+- Ficar botó per a elegir idioma.
+	+ Se considera el idioma del sistema iau? (EN(per defecte), ES)
+- Si li dones al boto de "back" en el telefon torna al menu principal (es lo normal?)
+- Carregar preguntes segons idioma
+- Practica 4:Puntuacions online.
 
-
+------------------------------------------------
 FET VICTOR 22/10:
--Les puntuacions locals ixen en ordre tal como demana la practica (era modificar la sentencia SQL pe a fer un order by puntuacio).
+------------------------------------------------
+-Les puntuacions locals ixen en ordre tal como demana la practica
+ (era modificar la sentencia SQL pe a fer un order by puntuacio).
 -Ficar botó en la finestra score per a borrar puntuacions(en menu):
-		Es borra la bd.
-		Es redibuixa la taula sense puntuacions.
+	+ Es borra la bd.
+	+ Es redibuixa la taula sense puntuacions.
 -Incluida llibreria gson per a la practica 4.
 -Afegit permis per a internet per a la practica 4.
 -Afegides clases HighScore  per a comparar les puntuacions.En local no les 
@@ -22,4 +25,29 @@ FET VICTOR 22/10:
  es crea un altra taula per als amics i es guarden , i ja es trau 
  ordenat amb una sql. Per el tema de mes taules no es menos eficient ni res.Aixi q com vejes.
  
+------------------------------------------------
+FET JOSEP 26/10
+------------------------------------------------
+- La app ja no mostra la barra amb el nom de la activitat (Theme.NoTitleBar)
+	+ El tema sense TitleBar pareix ser de gingerbread 
+- PlayActivity
+	+ Color blanc en el text de la pregunta (layout_land) 
+	+ El header indica la pregunta actual
+	+ Indicat la quantitat de diners en "Playing for: x €"
+- MainActivity
+	+ Centrat l'ultim boto del layout_main ( ara tots son match_parent en horitzontal )
+- RunnableFinPartida (simplement crida a FinPartida(), pero en un delay (mirar baix))
+- Runnables al seleccionar una resposta (checkOpcionA, ...)
+	+ 500 ms en mostrar la resposta correcta
+	+ marca en verd la bona i en roig si la que has triat no es correcta
+	+ 500 ms en mostrar nova pregunta
+	+ 1000 ms mostrant resposta incorrecta, despres RunnableFinPartida();
+- Nova imatge de background per a activitats en landscape
+- Imatges dels botons per a diferends dpi (en procés)
+- Carpetes creades
+	+ values-es
+		· Fitxer strings
+	+ drawable-es-hdpi
+	+ drawable-es-land-hdpi
+		. Logos en castellà
 	

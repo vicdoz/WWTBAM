@@ -29,10 +29,13 @@ public class PlayActivity extends Activity {
 	MenuItem menuItemAudience;
 	MenuItem menuItemEnd;
 	Button opcionA,opcionB,opcionC,opcionD;
-	TextView pregunta;
+	Button header;
+	TextView pregunta, dinero;
 	int actual;
 	int nAyudasDisponibles=3;
 	int fifty1,fifty2,correcta,audiencia,telefono;
+
+	String[] puntuacion;
 	
 	boolean bUsadoTelef=false,bUsadoAudience=false,bUsado50=false;
 
@@ -42,7 +45,10 @@ public class PlayActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play);
+		 puntuacion = getResources().getStringArray(R.array.array_puntuaciones);
 		 pregunta=(TextView)findViewById(R.id.textViewQuestion);
+		 dinero=(TextView)findViewById(R.id.textViewMoney);
+		 header=(Button)findViewById(R.id.buttonHeaderPlay);
 		 opcionA=(Button)findViewById(R.id.buttonOpcionA);
 		 opcionB=(Button)findViewById(R.id.buttonOpcionB);
 		 opcionC=(Button)findViewById(R.id.buttonOpcionC);
@@ -77,16 +83,24 @@ public class PlayActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		header.setText(getResources().getString(R.string.titulo_question)+actual+"  ");
+		dinero.setText(puntuacion[actual]+" €");
+		
 
 		SharedPreferences preferences =
 		getSharedPreferences("Settings", Context.MODE_PRIVATE);
 		nAyudasDisponibles= preferences.getInt("ayudas", 0)+1;
 		
 	}
+	
 	//acciones a realizar dependiendo del boton de la respuesta que pulsemos
 		View.OnClickListener handlerOpcionA = new View.OnClickListener() {
 	            public void onClick(View v) {
-	            	if(correcta==1){
+	            	opcionA.setBackgroundResource(R.drawable.button_opcion_selected);
+	            	opcionA.postDelayed(checkOpcionA, 500);
+	            	
+	            	/*if(correcta==1){
 						try {
 							actual++;
 							lectura_pregunta();
@@ -97,90 +111,65 @@ public class PlayActivity extends Activity {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-	            	}else fin_partida(false);
+	            	}else fin_partida(false);*/
 	            }
 	        };
+	        
 	        View.OnClickListener handlerOpcionB = new View.OnClickListener() {
 	            public void onClick(View v) {
-	            	if(correcta==2){
-						try {
-							actual++;
-							lectura_pregunta();
-						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-	            	}else fin_partida(false);
+	            	opcionB.setBackgroundResource(R.drawable.button_opcion_selected);
+	            	opcionB.postDelayed(checkOpcionB, 500);
 	            }
 	        };
+	        
 	        View.OnClickListener handlerOpcionC = new View.OnClickListener() {
 	            public void onClick(View v) {
-	            	if(correcta==3){
-						try {
-							actual++;
-							lectura_pregunta();
-						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-	            	}else fin_partida(false);
+	            	opcionC.setBackgroundResource(R.drawable.button_opcion_selected);
+	            	opcionC.postDelayed(checkOpcionC, 500);
 	            }
 	        };
+	        
 	        View.OnClickListener handlerOpcionD = new View.OnClickListener() {
 	        	 public void onClick(View v) {
-		            	if(correcta==4){
-							try {
-								actual++;
-								lectura_pregunta();
-							} catch (XmlPullParserException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-		            	}else fin_partida(false);
-		            }
-		        };
-		        private void fin_partida(boolean retirarse) {
-		        	//Si se retira se queda con la puntuacion que llevaba.
-		        	//Si es que ha fallado se calcula la puntuacion en función de la pregunta.
-		        	String[] puntuaciones=getResources().getStringArray(R.array.arry_puntuaciones);
-		        	String aux;
-		        	int puntuacion=0;
-		        	if(actual-1>0){ 
-		        		aux=puntuaciones[actual-1];
-		        		 puntuacion=Integer.valueOf(aux);
-		        	}
-		        	
-		        	if(!retirarse){
-		        		if(actual-1<5)puntuacion=0;
-		        		else if(actual-1>=5 && actual-1<10)puntuacion=Integer.valueOf(puntuaciones[5]);
-		        		else if(actual-1>=10 && actual-1<15)puntuacion=Integer.valueOf(puntuaciones[10]);
-		        		else if(actual-1==15)puntuacion=Integer.valueOf(puntuaciones[15]);
-		        	}
+	        		 	opcionD.setBackgroundResource(R.drawable.button_opcion_selected);
+		            	opcionD.postDelayed(checkOpcionD, 500);
+		         }
+		    };
+		    
+	        private void fin_partida(boolean retirarse) {
+	        	//Si se retira se queda con la puntuacion que llevaba.
+	        	//Si es que ha fallado se calcula la puntuacion en función de la pregunta.
+	        	String[] puntuaciones=getResources().getStringArray(R.array.array_puntuaciones);
+	        	String aux;
+	        	int puntuacion=0;
+	        	if(actual-1>0){ 
+	        		aux=puntuaciones[actual-1];
+	        		 puntuacion=Integer.valueOf(aux);
+	        	}
+	        	
+	        	if(!retirarse){
+	        		if(actual-1<5)puntuacion=0;
+	        		else if(actual-1>=5 && actual-1<10)puntuacion=Integer.valueOf(puntuaciones[5]);
+	        		else if(actual-1>=10 && actual-1<15)puntuacion=Integer.valueOf(puntuaciones[10]);
+	        		else if(actual-1==15)puntuacion=Integer.valueOf(puntuaciones[15]);
+	        	}
 
-		        	
-		        	MyHelper db=new MyHelper(getApplicationContext());
-		        	
-		        	SharedPreferences preferences =
-		        			getSharedPreferences("Settings", Context.MODE_PRIVATE);
-		        	String nombre=preferences.getString("nombre", "");
-		        	db.insertarPuntuacion(nombre, puntuacion);
-		        	Toast.makeText(getApplicationContext(), "Fin partida "+nombre+" puntuacion: "+puntuacion, Toast.LENGTH_LONG).show();		        	
-		        	//Borrado de preferencias
-		        	actual=1;
-		        	SharedPreferences settings = getApplicationContext().getSharedPreferences("var", Context.MODE_PRIVATE);
-		        	settings.edit().clear().commit();
-		        	startActivity(new Intent(PlayActivity.this, ScoresActivity.class));
-					finish();
-				}
+	        	
+	        	MyHelper db=new MyHelper(getApplicationContext());
+	        	
+	        	SharedPreferences preferences =
+	        			getSharedPreferences("Settings", Context.MODE_PRIVATE);
+	        	String nombre=preferences.getString("nombre", "");
+	        	db.insertarPuntuacion(nombre, puntuacion);
+	        	Toast.makeText(getApplicationContext(), "Fin partida "+nombre+" puntuacion: "+puntuacion, Toast.LENGTH_LONG).show();		        	
+	        	//Borrado de preferencias
+	        	actual=1;
+	        	SharedPreferences settings = getApplicationContext().getSharedPreferences("var", Context.MODE_PRIVATE);
+	        	settings.edit().clear().commit();
+	        	startActivity(new Intent(PlayActivity.this, ScoresActivity.class));
+				finish();
+			}
+	        
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -354,6 +343,8 @@ public class PlayActivity extends Activity {
 		opcionB.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
 		opcionC.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
 		opcionD.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
+		header.setText(getResources().getString(R.string.titulo_question)+actual+"  ");
+		dinero.setText(puntuacion[actual]+" €");
 	}
 	private void restoreData() {
 		SharedPreferences preferences =
@@ -375,5 +366,114 @@ public class PlayActivity extends Activity {
 		editor.putBoolean("bUsado50", bUsado50);
 		editor.commit();
 	}
+	
+	private void mostrarRespuestaIncorrecta(int eleccion, int correcta)
+	{
+		switch(eleccion)
+		{
+		case 1: opcionA.setBackgroundResource(R.drawable.button_opcion_wrong); break;
+		case 2: opcionB.setBackgroundResource(R.drawable.button_opcion_wrong); break;
+		case 3: opcionC.setBackgroundResource(R.drawable.button_opcion_wrong); break;
+		case 4: opcionD.setBackgroundResource(R.drawable.button_opcion_wrong); break;
+		default:break;
+		}
+		
+		switch(correcta)
+		{
+		case 1: opcionA.setBackgroundResource(R.drawable.button_opcion_correct); break;
+		case 2: opcionB.setBackgroundResource(R.drawable.button_opcion_correct); break;
+		case 3: opcionC.setBackgroundResource(R.drawable.button_opcion_correct); break;
+		case 4: opcionD.setBackgroundResource(R.drawable.button_opcion_correct); break;
+		default:break;
+		}
+	}
+	
+	Runnable checkOpcionA= new Runnable() {
+	    @Override
+	    public void run() {
+	    	if(correcta == 1)
+	    	{
+	    		opcionA.setBackgroundResource(R.drawable.button_opcion_correct);
+	    		opcionA.postDelayed(SiguientePregunta, 500);
+	    	}
+	    	else
+	    	{
+	    		mostrarRespuestaIncorrecta(1, correcta);
+	    		opcionA.postDelayed(RunnableFinPartida, 1000);
+	    	}
+	    }
+	};
+	
+	Runnable checkOpcionB= new Runnable() {
+	    @Override
+	    public void run() {
+	    	if(correcta == 2)
+	    	{
+	    		opcionB.setBackgroundResource(R.drawable.button_opcion_correct);
+	    		opcionB.postDelayed(SiguientePregunta, 500);
+	    	}
+	    	else
+	    	{
+	    		mostrarRespuestaIncorrecta(2, correcta);
+	    		opcionB.postDelayed(RunnableFinPartida, 1000);
+	    	}
+	    }
+	};
+	
+	Runnable checkOpcionC= new Runnable() {
+	    @Override
+	    public void run() {
+	    	if(correcta == 3)
+	    	{
+	    		opcionC.setBackgroundResource(R.drawable.button_opcion_correct);
+	    		opcionC.postDelayed(SiguientePregunta, 500);
+	    	}
+	    	else
+	    	{
+	    		mostrarRespuestaIncorrecta(3, correcta);
+	    		opcionC.postDelayed(RunnableFinPartida, 1000);
+	    	}
+	    }
+	};
+	
+	Runnable checkOpcionD= new Runnable() {
+	    @Override
+	    public void run() {
+	    	if(correcta == 4)
+	    	{
+	    		opcionD.setBackgroundResource(R.drawable.button_opcion_correct);
+	    		opcionD.postDelayed(SiguientePregunta, 500);
+	    	}
+	    	else
+	    	{
+	    		mostrarRespuestaIncorrecta(4, correcta);
+	    		opcionD.postDelayed(RunnableFinPartida, 1000);
+	    	}
+	    }
+	};
+	
+	Runnable SiguientePregunta= new Runnable()
+	{
+		@Override
+		public void run(){
+			try {
+				actual++;
+				lectura_pregunta();
+			} catch (XmlPullParserException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	};
+	
+	Runnable RunnableFinPartida= new Runnable() {
+	    @Override
+	    public void run() {
+	    	fin_partida(false);
+	    }
+	};
 
 }

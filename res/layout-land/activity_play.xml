@@ -8,8 +8,8 @@
     <Button
         android:id="@+id/buttonHeaderPlay"
         style="@style/TextoConSombra"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/header"
         android:gravity="right|center"
         android:text="@string/titulo_question"
@@ -45,6 +45,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        style="@style/TextoConSombra"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -56,7 +57,7 @@
 
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp" >
 
@@ -81,7 +82,7 @@
 
         <TableRow
             android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <Button

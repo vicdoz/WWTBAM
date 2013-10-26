@@ -8,26 +8,26 @@
     <string name="titulo_play">"Play "</string>
     <string name="titulo_scores">"Scores  "</string>
     <string name="titulo_settings">"Settings  "</string>
-    <string name="titulo_millonario">Millonario</string>
-    <string name="titulo_question">"Pregunta: "</string>
+    <string name="titulo_millonario">Millionaire</string>
+    <string name="titulo_question">"Question: "</string>
     <string name="descripcion_logo">Logo</string>
     <string name="descripcion_header">Header</string>
-    <string name="menu_credits">"Créditos "</string>
-    <string name="autor">Autores:</string>
+    <string name="menu_credits">"Credits "</string>
+    <string name="autor">Authors:</string>
     <string name="autor_victor">Victor Ahuir Dominguez</string>
     <string name="autor_josep">Josep Maria Tomas Sendra </string>
     <string name="mail_victor">vicahdo@fiv.upv.es</string>
     <string name="mail_josep">jotosen@fiv.upv.es </string>
     <string name="copyright">© ADM-2013 </string>
-    <string name="name_settings"> Nombre: </string>
+    <string name="name_settings"> Name: </string>
     <string name="jugadores_settings">Number of helps: </string>
     <string name="add_friend_settings">Add friend</string>
     <string name="descripcion_main_logo">Main Logo</string>
     <string name="title_activity_creditos">Créditos</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="tab_local">Local</string>
-    <string name="tab_friends">Amigos</string>
-    <string name="play_playing_for">"Jugando por: "</string>
+    <string name="tab_friends">Friends</string>
+    <string name="play_playing_for">"Playing for: "</string>
     <string name="play_current">"100000€"</string>
     <string name="play_opcion_a">"A:"</string>
     <string name="play_opcion_b">"B:"</string>
@@ -44,7 +44,7 @@
         <item>2</item>
         <item>3</item>
     </string-array>
-    <string-array name="arry_puntuaciones">
+    <string-array name="array_puntuaciones">
         <item>0</item>
         <item>100</item>
         <item>200</item>
@@ -68,8 +68,8 @@
     <string name="title_activity_fullscreen_play">FullscreenPlayActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="NoHelp">Sin ayudas</string>
-    <string name="deleteScore">Borrar puntuaciones locales</string>
+    <string name="NoHelp">No helps remaining</string>
+    <string name="deleteScore">Delete local scores</string>
 
 
 </resources>

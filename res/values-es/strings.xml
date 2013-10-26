@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">QuienQuiereSerMillonario</string>
+    <string name="action_settings">Opciones</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="titulo_main">Principal</string>
+    <string name="titulo_play">"Jugar "</string>
+    <string name="titulo_scores">"Puntuaciones  "</string>
+    <string name="titulo_settings">"Opciones  "</string>
+    <string name="titulo_millonario">Millonario</string>
+    <string name="titulo_question">"Pregunta: "</string>
+    <string name="descripcion_logo">Logo</string>
+    <string name="descripcion_header">Header</string>
+    <string name="menu_credits">"Créditos "</string>
+    <string name="autor">Autores:</string>
+    <string name="autor_victor">Victor Ahuir Dominguez</string>
+    <string name="autor_josep">Josep Maria Tomas Sendra </string>
+    <string name="mail_victor">vicahdo@fiv.upv.es</string>
+    <string name="mail_josep">jotosen@fiv.upv.es </string>
+    <string name="copyright">© ADM-2013 </string>
+    <string name="name_settings"> Nombre: </string>
+    <string name="jugadores_settings">Número de ayudas: </string>
+    <string name="add_friend_settings">Añadir amigo</string>
+    <string name="descripcion_main_logo">Main Logo</string>
+    <string name="title_activity_creditos">Créditos</string>
+    <string name="title_activity_settings">Opciones</string>
+    <string name="tab_local">Local</string>
+    <string name="tab_friends">Amigos</string>
+    <string name="play_playing_for">"Jugando por: "</string>
+    <string name="play_current">"100000€"</string>
+    <string name="play_opcion_a">"A:"</string>
+    <string name="play_opcion_b">"B:"</string>
+    <string name="play_opcion_c">"C:"</string>
+    <string name="play_opcion_d">"D:"</string>
+    <string name="play_item_phone">"Telefono"</string>
+    <string name="play_item_50">"50%"</string>
+    <string name="play_item_audience">"Audiencia"</string>
+    <string name="play_item_end">"Terminar"</string>
+	<string name="file">questions0001_es</string>
+    <string-array name="array_ayudas">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="arry_puntuaciones">
+        <item>0</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>4000</item>
+        <item>8000</item>
+        <item>16000</item>
+        <item>32000</item>
+        <item>64000</item>
+        <item>125000</item>
+        <item>250000</item>
+        <item>500000</item>        
+        <item>1000000</item>  
+        </string-array>
+
+    <string name="title_activity_scores">ScoresActivity</string>
+    <string name="title_activity_play">PlayActivity</string>
+    <string name="title_activity_fullscreen_play">FullscreenPlayActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="NoHelp">Sin ayudas</string>
+    <string name="deleteScore">Borrar puntuaciones locales</string>
+
+
+</resources>
