@@ -1,5 +1,7 @@
 A fer:
 
+! BUG: quan gastes el comodí del 50% i una de les dos opcions que queden es la A
+       no es pot clickar (exemple: pregunta 2)
 - Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe seleccionar-lo en el menu de nou.
 - Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
 - Controlar idiomes
