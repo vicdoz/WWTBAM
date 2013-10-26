@@ -1,15 +1,21 @@
 A fer:
 
-! BUG: quan gastes el comodí del 50% i una de les dos opcions que queden es la A
-       no es pot clickar (exemple: pregunta 2)
-- Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe seleccionar-lo en el menu de nou.
+- Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe
+  seleccionar-lo en el menu de nou.
+	+ Se pot guardar en el shared preferences en quina pregunta has gastat cada comodí
+	  de manera que:
+		* statusComodinX = 0 -> No gastat
+		* statusComodinX > 0 -> Gastat en pregunta X
+		per tant al carregar la activitat en landscape se pot comprovar si en
+		la pregunta que estas has gastat el comodí y fer el que se tinga que 
+		fer ( com borrar dos opcions o deixar seleccionada la opcio del telefon ).
+ 
 - Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
-- Controlar idiomes
 - Ficar botó per a elegir idioma.
 	+ Se considera el idioma del sistema iau? (EN(per defecte), ES)
 - Si li dones al boto de "back" en el telefon torna al menu principal (es lo normal?)
-- Carregar preguntes segons idioma
 - Practica 4:Puntuacions online.
+- Es possible que quede algún string en el idioma que no toca.
 
 ------------------------------------------------
 FET VICTOR 22/10:
@@ -31,25 +37,35 @@ FET VICTOR 22/10:
 FET JOSEP 26/10
 ------------------------------------------------
 - La app ja no mostra la barra amb el nom de la activitat (Theme.NoTitleBar)
-	+ El tema sense TitleBar pareix ser de gingerbread 
+	+ El tema sense TitleBar pareix ser de gingerbread. :S
+
 - PlayActivity
 	+ Color blanc en el text de la pregunta (layout_land) 
 	+ El header indica la pregunta actual
 	+ Indicat la quantitat de diners en "Playing for: x €"
+	+ Arreglada una excepcio al contestar totes les preguntes correctament.
+  	  S'assigna la maxima puntuació i acaba normalment (activitat Scores).
+	+ Arreglat un bug on despres de triar el comodí del 50%, la pregunta "A" sempre 
+          quedava no clickable. En el handlermenuItem50 hi havien restes d'un copy-paste
+	  per pulir, setClickable(false) sempre sobre A.
+	+ Preguntes carregades segons idioma del sistema( en lectura_pregunta() ).
+
 - MainActivity
 	+ Centrat l'ultim boto del layout_main ( ara tots son match_parent en horitzontal )
+
 - RunnableFinPartida (simplement crida a FinPartida(), pero en un delay (mirar baix))
 - Runnables al seleccionar una resposta (checkOpcionA, ...)
 	+ 500 ms en mostrar la resposta correcta
-	+ marca en verd la bona i en roig si la que has triat no es correcta
 	+ 500 ms en mostrar nova pregunta
+	+ marca en verd la bona i en roig si la que has triat no es correcta
 	+ 1000 ms mostrant resposta incorrecta, despres RunnableFinPartida();
+
 - Nova imatge de background per a activitats en landscape
-- Imatges dels botons per a diferends dpi (en procés)
+- Imatges dels botons per a diferends dpi
 - Carpetes creades
 	+ values-es
-		· Fitxer strings
+		* Fitxer strings en castellà
 	+ drawable-es-hdpi
 	+ drawable-es-land-hdpi
-		. Logos en castellà
+		* Logos en castellà
 	

@@ -2,6 +2,8 @@ package com.adm.whowantstobeamillionaire;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -247,15 +249,15 @@ public class PlayActivity extends Activity {
 			if(nAyudasDisponibles>0){
 				switch(fifty1){
 				case 1:opcionA.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 2:opcionB.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 3:opcionC.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 4:opcionD.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
+				case 2:opcionB.setVisibility(Button.INVISIBLE);opcionB.setClickable(false);break;
+				case 3:opcionC.setVisibility(Button.INVISIBLE);opcionC.setClickable(false);break;
+				case 4:opcionD.setVisibility(Button.INVISIBLE);opcionD.setClickable(false);break;
 				}
 				switch(fifty2){
 				case 1:opcionA.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 2:opcionB.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 3:opcionC.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 4:opcionD.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
+				case 2:opcionB.setVisibility(Button.INVISIBLE);opcionB.setClickable(false);break;
+				case 3:opcionC.setVisibility(Button.INVISIBLE);opcionC.setClickable(false);break;
+				case 4:opcionD.setVisibility(Button.INVISIBLE);opcionD.setClickable(false);break;
 				}
 			}else 		        	Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
 				return true;
@@ -307,7 +309,15 @@ public class PlayActivity extends Activity {
 		
 	}
 	private void lectura_pregunta() throws XmlPullParserException, IOException{
-		InputStream inputStream = this.getResources().openRawResource(R.raw.questions0001_es);
+		InputStream inputStream;
+		String idioma = Locale.getDefault().getDisplayLanguage();
+		
+		if(idioma == "EN"){
+			inputStream = this.getResources().openRawResource(R.raw.questions0001_es);
+		}
+		else{
+			inputStream = this.getResources().openRawResource(R.raw.questions0001);
+		}
 		XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
 		parser.setInput(inputStream, null);
 		 int eventType = XmlPullParser.START_DOCUMENT;
@@ -394,10 +404,16 @@ public class PlayActivity extends Activity {
 	    	if(correcta == 1)
 	    	{
 	    		opcionA.setBackgroundResource(R.drawable.button_opcion_correct);
-	    		opcionA.postDelayed(SiguientePregunta, 500);
-	    	}
-	    	else
-	    	{
+	    		if(actual == 15)
+	    		{
+	    			actual++;
+	    			opcionA.postDelayed(RunnableFinPartida, 1000);
+	    		}
+	    		else
+	    		{
+	    			opcionA.postDelayed(SiguientePregunta, 500);
+	    		}
+	    	}else{
 	    		mostrarRespuestaIncorrecta(1, correcta);
 	    		opcionA.postDelayed(RunnableFinPartida, 1000);
 	    	}
@@ -410,7 +426,15 @@ public class PlayActivity extends Activity {
 	    	if(correcta == 2)
 	    	{
 	    		opcionB.setBackgroundResource(R.drawable.button_opcion_correct);
-	    		opcionB.postDelayed(SiguientePregunta, 500);
+	    		if(actual == 15)
+	    		{
+	    			actual++;
+	    			opcionB.postDelayed(RunnableFinPartida, 1000);
+	    		}
+	    		else
+	    		{
+	    			opcionB.postDelayed(SiguientePregunta, 500);
+	    		}
 	    	}
 	    	else
 	    	{
@@ -426,7 +450,15 @@ public class PlayActivity extends Activity {
 	    	if(correcta == 3)
 	    	{
 	    		opcionC.setBackgroundResource(R.drawable.button_opcion_correct);
-	    		opcionC.postDelayed(SiguientePregunta, 500);
+	    		if(actual == 15)
+	    		{
+	    			actual++;
+	    			opcionC.postDelayed(RunnableFinPartida, 1000);
+	    		}
+	    		else
+	    		{
+	    			opcionC.postDelayed(SiguientePregunta, 500);
+	    		}
 	    	}
 	    	else
 	    	{
@@ -442,7 +474,15 @@ public class PlayActivity extends Activity {
 	    	if(correcta == 4)
 	    	{
 	    		opcionD.setBackgroundResource(R.drawable.button_opcion_correct);
-	    		opcionD.postDelayed(SiguientePregunta, 500);
+	    		if(actual == 15)
+	    		{
+	    			actual++;
+	    			opcionD.postDelayed(RunnableFinPartida, 1000);
+	    		}
+	    		else
+	    		{
+	    			opcionD.postDelayed(SiguientePregunta, 500);
+	    		}
 	    	}
 	    	else
 	    	{
