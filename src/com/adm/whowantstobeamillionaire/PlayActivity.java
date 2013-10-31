@@ -2,8 +2,20 @@ package com.adm.whowantstobeamillionaire;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -40,8 +52,12 @@ public class PlayActivity extends Activity {
 	String[] puntuacion;
 	
 	boolean bUsadoTelef=false,bUsadoAudience=false,bUsado50=false;
-
 	
+	int statusTelefono=0;
+	int statusAudience=0;
+	int status50=0;
+
+	HttpClient cliente;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +76,8 @@ public class PlayActivity extends Activity {
 		 opcionC.setOnClickListener(handlerOpcionC);
 		 opcionD.setOnClickListener(handlerOpcionD);
 		 actual=1;
+		 
+		 cliente = new DefaultHttpClient();
 	}
 	@Override
 	protected void onPause() {
@@ -89,6 +107,9 @@ public class PlayActivity extends Activity {
 		header.setText(getResources().getString(R.string.titulo_question)+actual+"  ");
 		dinero.setText(puntuacion[actual]+" €");
 		
+		if(status50==actual) aplicarComodin50();
+		if(statusTelefono==actual) aplicarComodinTelefono();
+		if(statusAudience==actual) aplicarComodinAudience();
 
 		SharedPreferences preferences =
 		getSharedPreferences("Settings", Context.MODE_PRIVATE);
@@ -168,6 +189,29 @@ public class PlayActivity extends Activity {
 	        	actual=1;
 	        	SharedPreferences settings = getApplicationContext().getSharedPreferences("var", Context.MODE_PRIVATE);
 	        	settings.edit().clear().commit();
+	        	
+	        	// PUT en el servidor HTTP
+	        	HttpClient client = new DefaultHttpClient();
+	        	HttpPut request = new HttpPut("http://wwtbamandroid.appspot.com/rest/highscores");
+	        	List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+	        	pairs.add(new BasicNameValuePair("key", "value"));
+	        	try {
+					request.setEntity(new UrlEncodedFormEntity(pairs));
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        	try {
+					HttpResponse response = client.execute(request);
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        	
+	        	// Acaba la actividad play y muestra las puntuaciones
 	        	startActivity(new Intent(PlayActivity.this, ScoresActivity.class));
 				finish();
 			}
@@ -215,9 +259,12 @@ public class PlayActivity extends Activity {
 		menuItemEnd.setIcon(drawable.ic_input_delete);
 		menuItemEnd.setOnMenuItemClickListener(handlermenuItemEnd);	
 		
-		if(!bUsadoTelef)menuItemPhone.setEnabled(true);
-		if(!bUsado50)menuItem50.setEnabled(true);
-		if(!bUsadoAudience)menuItemAudience.setEnabled(true);
+		//if(!bUsadoTelef)menuItemPhone.setEnabled(true);
+		//if(!bUsado50)menuItem50.setEnabled(true);
+		//if(!bUsadoAudience)menuItemAudience.setEnabled(true);
+		if(statusTelefono==0)menuItemPhone.setEnabled(true);
+		if(statusAudience==0)menuItemAudience.setEnabled(true);
+		if(status50==0)menuItem50.setEnabled(true);
 		
 	    return true;
 	}
@@ -227,16 +274,14 @@ public class PlayActivity extends Activity {
 		@Override
 		public boolean onMenuItemClick(MenuItem arg0) {
 			nAyudasDisponibles--;
-			bUsadoTelef=true;
+			//bUsadoTelef=true;
+			statusTelefono=actual;
 			menuItemPhone.setEnabled(false);
 			if(nAyudasDisponibles>0){
-				switch(telefono){
-				case 1:opcionA.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				case 2:opcionB.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				case 3:opcionC.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				case 4:opcionD.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				}
-			}else 		        	Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
+				aplicarComodinTelefono();
+			}else{
+				Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
+			}
 			return true;
 		}
 	};
@@ -245,21 +290,13 @@ public class PlayActivity extends Activity {
 		public boolean onMenuItemClick(MenuItem arg0) {
 			nAyudasDisponibles--;
 			menuItem50.setEnabled(false);
-			bUsado50=true;
+			//bUsado50=true;
+			status50=actual;
 			if(nAyudasDisponibles>0){
-				switch(fifty1){
-				case 1:opcionA.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 2:opcionB.setVisibility(Button.INVISIBLE);opcionB.setClickable(false);break;
-				case 3:opcionC.setVisibility(Button.INVISIBLE);opcionC.setClickable(false);break;
-				case 4:opcionD.setVisibility(Button.INVISIBLE);opcionD.setClickable(false);break;
-				}
-				switch(fifty2){
-				case 1:opcionA.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
-				case 2:opcionB.setVisibility(Button.INVISIBLE);opcionB.setClickable(false);break;
-				case 3:opcionC.setVisibility(Button.INVISIBLE);opcionC.setClickable(false);break;
-				case 4:opcionD.setVisibility(Button.INVISIBLE);opcionD.setClickable(false);break;
-				}
-			}else 		        	Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
+				aplicarComodin50();
+			}else{ 
+				Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();
+			}
 				return true;
 		}
 	};
@@ -267,17 +304,14 @@ public class PlayActivity extends Activity {
 		@Override
 		public boolean onMenuItemClick(MenuItem arg0) {
 			nAyudasDisponibles--;
-			bUsadoAudience=true;
+			//bUsadoAudience=true;
+			statusAudience=actual;
 			menuItemAudience.setEnabled(false);
 			if(nAyudasDisponibles>0){
-				switch(audiencia){
-				case 1:opcionA.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				case 2:opcionB.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				case 3:opcionC.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				case 4:opcionD.setBackgroundResource(R.drawable.button_opcion_selected);break;
-				}
-			
-			}else 		        	Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
+				aplicarComodinAudience();
+			}else{
+				Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
+			}
 			return true;
 		}
 	};
@@ -350,9 +384,9 @@ public class PlayActivity extends Activity {
 		opcionC.setBackgroundResource(R.drawable.button_opcion);
 		opcionD.setBackgroundResource(R.drawable.button_opcion);
 		opcionA.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
-		opcionB.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
-		opcionC.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
-		opcionD.setVisibility(Button.VISIBLE);opcionA.setClickable(true);
+		opcionB.setVisibility(Button.VISIBLE);opcionB.setClickable(true);
+		opcionC.setVisibility(Button.VISIBLE);opcionC.setClickable(true);
+		opcionD.setVisibility(Button.VISIBLE);opcionD.setClickable(true);
 		header.setText(getResources().getString(R.string.titulo_question)+actual+"  ");
 		dinero.setText(puntuacion[actual]+" €");
 	}
@@ -360,21 +394,64 @@ public class PlayActivity extends Activity {
 		SharedPreferences preferences =
 		getSharedPreferences("var", Context.MODE_PRIVATE);
 		actual=preferences.getInt("actual",1);
-		bUsadoTelef=preferences.getBoolean("bUsadoTelef",false);
-		bUsadoAudience=preferences.getBoolean("bUsadoAudience",false);
-		bUsado50=preferences.getBoolean("bUsado50",false);
+		//bUsadoTelef=preferences.getBoolean("bUsadoTelef",false);
+		//bUsadoAudience=preferences.getBoolean("bUsadoAudience",false);
+		//bUsado50=preferences.getBoolean("bUsado50",false);
+		statusTelefono = preferences.getInt("statusTelefono", 0);
+		statusAudience = preferences.getInt("statusAudience", 0);
+		status50 = preferences.getInt("status50", 0);
 	}
 
 
-	private void saveData() {
+	private void saveData()
+	{
 		SharedPreferences preferences =
 		getSharedPreferences("var", Context.MODE_PRIVATE);
 		Editor editor = preferences.edit();
 		editor.putInt("actual",actual);
-		editor.putBoolean("bUsadoTelef", bUsadoTelef);
-		editor.putBoolean("bUsadoAudience", bUsadoAudience);
-		editor.putBoolean("bUsado50", bUsado50);
+		//editor.putBoolean("bUsadoTelef", bUsadoTelef);
+		//editor.putBoolean("bUsadoAudience", bUsadoAudience);
+		//editor.putBoolean("bUsado50", bUsado50);
+		editor.putInt("statusTelefono", statusTelefono);
+		editor.putInt("statusAudience", statusAudience);
+		editor.putInt("status50", status50);
 		editor.commit();
+	}
+	
+	private void aplicarComodin50()
+	{
+		switch(fifty1){
+		case 1:opcionA.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
+		case 2:opcionB.setVisibility(Button.INVISIBLE);opcionB.setClickable(false);break;
+		case 3:opcionC.setVisibility(Button.INVISIBLE);opcionC.setClickable(false);break;
+		case 4:opcionD.setVisibility(Button.INVISIBLE);opcionD.setClickable(false);break;
+		}
+		switch(fifty2){
+		case 1:opcionA.setVisibility(Button.INVISIBLE);opcionA.setClickable(false);break;
+		case 2:opcionB.setVisibility(Button.INVISIBLE);opcionB.setClickable(false);break;
+		case 3:opcionC.setVisibility(Button.INVISIBLE);opcionC.setClickable(false);break;
+		case 4:opcionD.setVisibility(Button.INVISIBLE);opcionD.setClickable(false);break;
+		}
+	}
+	
+	private void aplicarComodinTelefono()
+	{
+		switch(telefono){
+		case 1:opcionA.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		case 2:opcionB.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		case 3:opcionC.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		case 4:opcionD.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		}
+	}
+	
+	private void aplicarComodinAudience()
+	{
+		switch(audiencia){
+		case 1:opcionA.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		case 2:opcionB.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		case 3:opcionC.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		case 4:opcionD.setBackgroundResource(R.drawable.button_opcion_selected);break;
+		}
 	}
 	
 	private void mostrarRespuestaIncorrecta(int eleccion, int correcta)

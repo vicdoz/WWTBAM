@@ -1,18 +1,39 @@
 package com.adm.whowantstobeamillionaire;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
 	Spinner spinnerAyudas;
+	Button buttonAdd;
+	EditText editTextFriend;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +44,11 @@ public class SettingsActivity extends Activity {
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_ayudas, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerAyudas.setAdapter(adapter);
+		
+		buttonAdd = (Button) findViewById(R.id.buttonAddFriend);
+		buttonAdd.setOnClickListener(handlerAddFriend);
+		
+		editTextFriend = (EditText) findViewById(R.id.editTextFriend); 
 		
 	}
 
@@ -77,5 +103,40 @@ public class SettingsActivity extends Activity {
 		editor.putInt("ayudas", spinner.getSelectedItemPosition());
 		editor.commit();
 	}
+	
+	// LISTENERS
+	
+	View.OnClickListener handlerAddFriend = new View.OnClickListener() {
+        public void onClick(View v) {
+        	String url = "http://wwtbamandroid.appspot.com/rest/friends";
+        	HttpClient client = new DefaultHttpClient();
+        	HttpPost request = new HttpPost(url);
+        	
+        	// Obtener nombre del amigo a partir del EditTextFriend
+        	String friend = editTextFriend.getText().toString();
+        	
+        	// Obtener el nombre del usuario a partir del EditTextNombre
+        	EditText text = (EditText) findViewById(R.id.nombre);
+    		String user = text.getText().toString();
+        	
+        	List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+        	pairs.add(new BasicNameValuePair(user, friend));
+        	
+        	try {
+				request.setEntity(new UrlEncodedFormEntity(pairs));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+        	try {
+        		Toast.makeText(getApplicationContext(), "Trying to save", Toast.LENGTH_LONG).show();
+				HttpResponse response = client.execute(request);
+				Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        }
+    };
 
 }

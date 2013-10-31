@@ -1,20 +1,15 @@
 A fer:
 
-- Arreglar bug de que quant gires la finestra i havies utilitzat un comodí no deixe
-  seleccionar-lo en el menu de nou.
-	+ Se pot guardar en el shared preferences en quina pregunta has gastat cada comodí
-	  de manera que:
-		* statusComodinX = 0 -> No gastat
-		* statusComodinX > 0 -> Gastat en pregunta X
-		per tant al carregar la activitat en landscape se pot comprovar si en
-		la pregunta que estas has gastat el comodí y fer el que se tinga que 
-		fer ( com borrar dos opcions o deixar seleccionada la opcio del telefon ).
+- Funcionalitat "Friend scores"
+	+ Carregar puntuacions
+	+ Mostrar ProgressBar
+
+- El networking que donen en el butlletí funciona per a 2.2 pero a partir de honeycomb
+  s'ha de fer el networking en un fil diferent al principal. Queda com a pendent el
+  fer-ho en un AsyncThread per a que funcione en els nostres dispositius i comprovar
+  si funciona de eixa manera tambe en 2.2.
  
 - Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
-- Ficar botó per a elegir idioma.
-	+ Se considera el idioma del sistema iau? (EN(per defecte), ES)
-- Si li dones al boto de "back" en el telefon torna al menu principal (es lo normal?)
-- Practica 4:Puntuacions online.
 - Es possible que quede algún string en el idioma que no toca.
 
 ------------------------------------------------
@@ -68,4 +63,38 @@ FET JOSEP 26/10
 	+ drawable-es-hdpi
 	+ drawable-es-land-hdpi
 		* Logos en castellà
+		
+------------------------------------------------
+FET JOSEP 28/10 i 31/10
+------------------------------------------------
+- Parlat en professor
+	+ El boto de back mentre estas jugant està be com està, me va comentar que si
+	  volem podríem mostrar un missatge preguntant si el usuari vol acabar o pausar
+	  (sincerament, ho va dir com a un extra, no me va pareixer que ho diguera com
+	  a algo que "deuriem de fer).
+	+ L'idioma depenent del sistema esta be com està.
+
+- Funcionalitat "Add friend"
+	+ Guarda el parell (usuari-amic)
 	
+- Funcionalitat "High Score"
+	+ Guardar máxima puntuació per usuari
+	+ Sobreescriure en cas de la actual ser major (no se si ho fa el serv. http)
+
+- El codi no tira excepcions de network en el emulador,lo que no se es si realment
+  esta fent algo.
+
+- PlayActivity
+	+ Substituits bUsado* per statusComodin* per a saber si un comodí s'ha utilitzat.
+		* status = 0 -> no utilitzat
+		* status > 0 -> utilitzat en la pregunta x
+	+ Al girar el disposititu es mantenen els efectes dels comodins, les dos opcions 
+	  resultants del comodi del 50% o la seleccionada del telefon o la audiencia.
+	+ Arreglat un bug en "reinicio_fondos" on no se tornaven tots els botons a
+	  clickable = true, sols el A (copy-paste).
+	+ Creades les funcions per a aplicar els comodins (el codi que hi havia en els
+	  handlers) , més que res perque eixa part del codi es pot executar des de dos
+	  llocs diferents ( des de el handler del boto o des del onResume).
+		* aplicarComodin50();
+		* aplicarComodinTelefono();
+		* aplicarComodinAudience();

@@ -56,9 +56,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class id {
         public static final int MenuItemDeleteScore=0x7f0b0030;
         public static final int Nombre=0x7f0b0025;
-        public static final int action_settings=0x7f0b002a;
         public static final int button1=0x7f0b0029;
-        public static final int button2=0x7f0b001e;
+        public static final int buttonAddFriend=0x7f0b001e;
         public static final int buttonHeaderCreditos=0x7f0b0000;
         public static final int buttonHeaderPlay=0x7f0b000d;
         public static final int buttonHeaderSettings=0x7f0b0017;
@@ -71,7 +70,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonSettings=0x7f0b000b;
         public static final int creditosMenuItem=0x7f0b002b;
         public static final int editText1=0x7f0b0027;
-        public static final int editText2=0x7f0b001f;
+        public static final int editText2=0x7f0b002a;
+        public static final int editTextFriend=0x7f0b001f;
         public static final int imageView1=0x7f0b000c;
         public static final int imageViewLogo=0x7f0b0008;
         public static final int menuItem50=0x7f0b002d;

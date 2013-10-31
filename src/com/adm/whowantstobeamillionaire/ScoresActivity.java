@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.Toast;
 
 public class ScoresActivity extends Activity {
@@ -113,6 +114,19 @@ tabs.setCurrentTab(0);*/
 			            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
 			list.setAdapter(adaptador);
 			
+		}
+	};
+	
+	OnTabChangeListener handlerTabs = new OnTabChangeListener() {
+
+		@Override
+		public void onTabChanged(String tabId) {
+
+			int i = tabs.getCurrentTab();
+		
+			if(i==1){
+			
+			}
 		}
 	};
 	
