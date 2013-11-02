@@ -146,7 +146,6 @@ private void register_friend(){
         	pairs.add(new BasicNameValuePair(user, friend));
         	
         	try {
-<<<<<<< HEAD
 				request.setEntity(new UrlEncodedFormEntity(pairs));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
@@ -169,22 +168,4 @@ private void register_friend(){
 	};
 };
 }
-=======
-    			request.setEntity(new UrlEncodedFormEntity(pairs));
-    		} catch (UnsupportedEncodingException e) {
-    			e.printStackTrace();
-    		}
-        	try {
-        		Toast.makeText(getApplicationContext(), "Trying to save", Toast.LENGTH_LONG).show();
-    			HttpResponse response = client.execute(request);
-    			Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-    		} catch (ClientProtocolException e) {
-    			e.printStackTrace();
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    		}
-        }
-    };
 
-}
->>>>>>> 4d675ae06b4aa6cd4c574b8fcfcd32a93b37874f
