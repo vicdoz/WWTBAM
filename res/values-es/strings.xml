@@ -11,7 +11,7 @@
     <string name="titulo_millonario">Millonario</string>
     <string name="titulo_question">"Pregunta: "</string>
     <string name="descripcion_logo">Logo</string>
-    <string name="descripcion_header">Header</string>
+    <string name="descripcion_header">Logo de cabecera</string>
     <string name="menu_credits">"Créditos "</string>
     <string name="autor">Autores:</string>
     <string name="autor_victor">Victor Ahuir Dominguez</string>
@@ -22,7 +22,7 @@
     <string name="name_settings"> Nombre: </string>
     <string name="jugadores_settings">Número de ayudas: </string>
     <string name="add_friend_settings">Añadir amigo</string>
-    <string name="descripcion_main_logo">Main Logo</string>
+    <string name="descripcion_main_logo">Logo principal</string>
     <string name="title_activity_creditos">Créditos</string>
     <string name="title_activity_settings">Opciones</string>
     <string name="tab_local">Local</string>
@@ -38,6 +38,7 @@
     <string name="play_item_audience">"Audiencia"</string>
     <string name="play_item_end">"Terminar"</string>
 	<string name="file">questions0001_es</string>
+	<string name="local_currency">" €"</string>
     <string-array name="array_ayudas">
         <item>0</item>
         <item>1</item>

@@ -23,7 +23,7 @@
     <string name="jugadores_settings">Number of helps: </string>
     <string name="add_friend_settings">Add friend</string>
     <string name="descripcion_main_logo">Main Logo</string>
-    <string name="title_activity_creditos">Créditos</string>
+    <string name="title_activity_creditos">Credits</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="tab_local">Local</string>
     <string name="tab_friends">Friends</string>
@@ -38,6 +38,7 @@
     <string name="play_item_audience">"Audience"</string>
     <string name="play_item_end">"End game"</string>
 	<string name="file">questions0001</string>
+	<string name="local_currency">" $"</string>
     <string-array name="array_ayudas">
         <item>0</item>
         <item>1</item>
