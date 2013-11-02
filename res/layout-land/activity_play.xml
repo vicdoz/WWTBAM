@@ -64,8 +64,9 @@
             <Button
                 android:id="@+id/buttonOpcionA"
                 style="@style/TextoConSombra"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:background="@drawable/button_opcion"
                 android:text="@string/play_opcion_a"
                 android:textStyle="bold" />
@@ -73,8 +74,9 @@
             <Button
                 android:id="@+id/buttonOpcionB"
                 style="@style/TextoConSombra"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:background="@drawable/button_opcion"
                 android:text="@string/play_opcion_b"
                 android:textStyle="bold" />
@@ -88,8 +90,9 @@
             <Button
                 android:id="@+id/buttonOpcionC"
                 style="@style/TextoConSombra"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:background="@drawable/button_opcion"
                 android:text="@string/play_opcion_c"
                 android:textStyle="bold" />
@@ -97,8 +100,9 @@
             <Button
                 android:id="@+id/buttonOpcionD"
                 style="@style/TextoConSombra"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:background="@drawable/button_opcion"
                 android:text="@string/play_opcion_d"
                 android:textStyle="bold" />

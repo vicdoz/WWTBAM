@@ -1,3 +1,6 @@
+------------------------------------------------
+DATA LIMIT: 8 NOV - 12:00
+------------------------------------------------
 A fer:
 
 - Funcionalitat "Friend scores"
@@ -10,7 +13,10 @@ A fer:
   si funciona de eixa manera tambe en 2.2.
  
 - Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
-- Es possible que quede algún string en el idioma que no toca.
+
+- Al canviar al tema per defecte tornava a estar tot en el tema de android 4.* , pero
+  al efegir un element nou en layout-land ara apareix el tema de gingerbread sense
+  haver tocat el tema per defecte. :S
 
 ------------------------------------------------
 FET VICTOR 22/10:
@@ -98,3 +104,29 @@ FET JOSEP 28/10 i 31/10
 		* aplicarComodin50();
 		* aplicarComodinTelefono();
 		* aplicarComodinAudience();
+		
+------------------------------------------------
+FET JOSEP 2/11
+------------------------------------------------
+
+- Canviat en AndroidManifest.xml el tema actual (Theme.NoTitleBar) per el tema per
+  defecte i s'elimina la TitleBar en cada activitat per codi en cada OnCreate:
+	+ requestWindowFeature(Window.FEATURE_NO_TITLE);
+	
+- strings.xml
+	+ Corregit alguns strings que faltava canviar de idioma, ara estàn tots com toca.
+	+ Afegit string "local_currency" per a mostrar una moneda diferent segons idioma. 
+
+- SettingsActivity
+	+ El text introduit en els EditText s'ha canviat a negre si es Gingerbread o
+	  anterior perque el fons del EditText es blanc.
+	
+- Afegida una carpeta "values-xhdpi" per a tindre styles.xml per a xhdpi, principalment
+  perque en xhdpi fa falta un tamany de lletra major (afegida tambe la carpeta values-hdpi
+  perque el senyor android pillava per defecte la carpeta de xhdpi).
+  
+- Canvis en layout-land (ajustats els botons de resposta i altres)
+	
+- Comprovat en el emulador:
+	+ dispositiu LDPI i MDPI:	El tamany dels elements es correcte.
+	+ dispositiu XHDPI: 		El tamany dels elements es correcte.

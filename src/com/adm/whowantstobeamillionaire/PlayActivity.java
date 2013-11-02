@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.Button;
@@ -62,7 +63,11 @@ public class PlayActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
 		setContentView(R.layout.activity_play);
+		
 		 puntuacion = getResources().getStringArray(R.array.array_puntuaciones);
 		 pregunta=(TextView)findViewById(R.id.textViewQuestion);
 		 dinero=(TextView)findViewById(R.id.textViewMoney);
@@ -105,7 +110,7 @@ public class PlayActivity extends Activity {
 		}
 		
 		header.setText(getResources().getString(R.string.titulo_question)+actual+"  ");
-		dinero.setText(puntuacion[actual]+" €");
+		dinero.setText(puntuacion[actual]+getResources().getString(R.string.local_currency));
 		
 		if(status50==actual) aplicarComodin50();
 		if(statusTelefono==actual) aplicarComodinTelefono();
@@ -388,7 +393,7 @@ public class PlayActivity extends Activity {
 		opcionC.setVisibility(Button.VISIBLE);opcionC.setClickable(true);
 		opcionD.setVisibility(Button.VISIBLE);opcionD.setClickable(true);
 		header.setText(getResources().getString(R.string.titulo_question)+actual+"  ");
-		dinero.setText(puntuacion[actual]+" €");
+		dinero.setText(puntuacion[actual]+getResources().getString(R.string.local_currency));
 	}
 	private void restoreData() {
 		SharedPreferences preferences =

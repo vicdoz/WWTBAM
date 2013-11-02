@@ -64,7 +64,7 @@
         <Spinner
             android:id="@+id/spinnerAyudas"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="0.3"
             android:background="@android:color/background_light" 
             style="@style/TextoConSombra"/>
