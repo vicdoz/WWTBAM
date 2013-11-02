@@ -1,29 +1,37 @@
 package com.adm.whowantstobeamillionaire;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 
-import android.os.Bundle;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import android.R.drawable;
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
-import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 public class ScoresActivity extends Activity {
 	
 	TabHost tabs;
+	AsyncTask<Void, Void, InputStream> getScoresServer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +115,6 @@ tabs.setCurrentTab(0);*/
 		}
 
 		private void redibujarTablaPuntuaciones() {
-			// TODO Auto-generated method stub
 			ListView list = (ListView) findViewById(R.id.puntuaciones_lista);
 			ArrayList<HashMap<String, String>> listaVacia = new ArrayList<HashMap<String, String>>();
 			SimpleAdapter adaptador = new SimpleAdapter(getApplicationContext(), listaVacia, R.layout.puntuacion,
@@ -129,6 +136,41 @@ tabs.setCurrentTab(0);*/
 			}
 		}
 	};
+    
+
+	private void getScores(){
+		InputStream puntuaciones=recibirPuntuaciones();
+		Gson gson = new Gson();
+		Reader reader = new InputStreamReader(puntuaciones);
+		HighScoreList hsl = gson.fromJson(reader, HighScoreList.class);
+		List<HighScore> results =hsl.getScores();
+	};
 	
+	
+	private InputStream recibirPuntuaciones(){
+		
+		getScoresServer = new AsyncTask<Void,Void,InputStream>() {
+		@Override
+		protected InputStream doInBackground(Void... params) {
+			HttpClient httpClient = new DefaultHttpClient();
+			HttpGet paquete =
+			    new HttpGet("http://wwtbamandroid.appspot.com/rest/highscores"); 
+			paquete.setHeader("content-type", "application/json"); 
+			try
+			{
+			        HttpResponse resp = httpClient.execute(paquete);
+			        HttpEntity getResponseEntity = resp.getEntity();
+			        return getResponseEntity.getContent();
+			}
+			catch(Exception ex)
+			{
+			        Log.e("ServicioRest","Error!", ex);
+			}
+			return null;
+
+		};
+		};
+		return null;
+	}
 	
 }

@@ -16,6 +16,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -34,6 +35,7 @@ public class SettingsActivity extends Activity {
 	Spinner spinnerAyudas;
 	Button buttonAdd;
 	EditText editTextFriend;
+	AsyncTask<Void, Void, Boolean> register;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +109,16 @@ public class SettingsActivity extends Activity {
 	// LISTENERS
 	
 	View.OnClickListener handlerAddFriend = new View.OnClickListener() {
+
         public void onClick(View v) {
-        	String url = "http://wwtbamandroid.appspot.com/rest/friends";
+        	register_friend();
+        }
+};
+private void register_friend(){
+	register=new AsyncTask<Void,Void,Boolean>() {
+		@Override
+		protected Boolean doInBackground(Void... params) {
+			String url = "http://wwtbamandroid.appspot.com/rest/friends";
         	HttpClient client = new DefaultHttpClient();
         	HttpPost request = new HttpPost(url);
         	
@@ -126,17 +136,22 @@ public class SettingsActivity extends Activity {
 				request.setEntity(new UrlEncodedFormEntity(pairs));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
+				return false;
 			}
+        	
         	try {
         		Toast.makeText(getApplicationContext(), "Trying to save", Toast.LENGTH_LONG).show();
 				HttpResponse response = client.execute(request);
 				Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
+				return false;
 			} catch (IOException e) {
 				e.printStackTrace();
+				return false;
 			}
-        }
-    };
-
+        	return true;
+        };
+	};
+};
 }
