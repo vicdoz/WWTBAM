@@ -23,7 +23,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -31,7 +30,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
@@ -151,8 +149,7 @@ public class SettingsActivity extends Activity {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 				return false;
-			}
-        	
+			}	
         	try {
         		HttpResponse response = client.execute(request);
 				} catch (ClientProtocolException e) {

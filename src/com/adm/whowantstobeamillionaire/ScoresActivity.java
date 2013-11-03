@@ -1,5 +1,6 @@
 package com.adm.whowantstobeamillionaire;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -15,6 +16,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.R.drawable;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +35,8 @@ import com.google.gson.Gson;
 public class ScoresActivity extends Activity {
 	
 	TabHost tabs;
-	AsyncTask<Void, Void, InputStream> getScoresServer;
+	ListView list_friends;
+	SimpleAdapter adaptadorAmigos;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,15 +86,11 @@ tabs.setCurrentTab(0);*/
 		SimpleAdapter adaptador = new SimpleAdapter(this, listaPuntuaciones, R.layout.puntuacion,
 		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
 		list.setAdapter(adaptador);
-		/*Para cargar las puntuaciones de los amigos
+		/*Para cargar las puntuaciones de los amigos*/
 		tabs.setCurrentTab(1);
-		ListView list_friends = (ListView) findViewById(R.id.puntuacionesListaAmigos);
+		list_friends = (ListView) findViewById(R.id.puntuacionesListaAmigos);
+		getScores();
 
-		ArrayList<HashMap<String, String>> listaPuntuacionesAmigos = new ArrayList<HashMap<String, String>>();
-		listaPuntuacionesAmigos=getScores();
-		SimpleAdapter adaptadorAmigos = new SimpleAdapter(this, listaPuntuaciones, R.layout.puntuacion,
-		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
-		list_friends.setAdapter(adaptadorAmigos);*/
 		
 		
 	}
@@ -152,41 +152,69 @@ tabs.setCurrentTab(0);*/
 	};
     
 
-	private ArrayList<HashMap<String, String>> getScores(){
-		InputStream puntuaciones=recibirPuntuaciones();
-		Gson gson = new Gson();
-		Reader reader = new InputStreamReader(puntuaciones);
-		HighScoreList hsl = gson.fromJson(reader, HighScoreList.class);
-		ArrayList<HashMap<String, String>> results=hsl.getScoresAsArrayList();
-		
-		return results;
+	private void getScores(){
+		new recibirPuntuaciones().execute();
 	};
 	
 	
-	private InputStream recibirPuntuaciones(){
+	private class  recibirPuntuaciones extends AsyncTask<Void,Void,String>{
 		
-		getScoresServer = new AsyncTask<Void,Void,InputStream>() {
-		@Override
-		protected InputStream doInBackground(Void... params) {
+		String result;
+		InputStream a;
+		StringBuilder sb;
+		protected String doInBackground(Void...params) {
 			HttpClient httpClient = new DefaultHttpClient();
-			HttpGet paquete =
-			    new HttpGet("http://wwtbamandroid.appspot.com/rest/highscores"); 
-			paquete.setHeader("content-type", "application/json"); 
+			HttpGet paquete =new HttpGet("http://wwtbamandroid.appspot.com/rest/highscores?name="+loadPreferencesName()); 	
 			try
 			{
 			        HttpResponse resp = httpClient.execute(paquete);
 			        HttpEntity getResponseEntity = resp.getEntity();
-			        return getResponseEntity.getContent();
+			        a=getResponseEntity.getContent();
+			        BufferedReader reader = new BufferedReader(new InputStreamReader(a,"iso-8859-1"),8);
+			         sb = new StringBuilder();
+			         String line = null;
+			         while ((line = reader.readLine()) != null) {
+			             sb.append(line + "\n");
+			         }
+			         //a.close();
+			         result=sb.toString();
+			         Log.d("victor", result);
+			         return result;
+			        
+			         
 			}
 			catch(Exception ex)
 			{
 			        Log.e("ServicioRest","Error!", ex);
 			}
 			return null;
+		}
 
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			Gson gson = new Gson();
+			
+			HighScoreList hsl = gson.fromJson(result, HighScoreList.class);
+			ArrayList<HashMap<String, String>> results=hsl.getScoresAsArrayList(loadPreferencesName());
+			SimpleAdapter adaptadorAmigos = new SimpleAdapter(getApplicationContext(), results, R.layout.puntuacion,
+		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
+		list_friends.setAdapter(adaptadorAmigos);
+		
+			
+		}
+
+		@Override
+		protected void onProgressUpdate(Void... values) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
 		};
+		
+		private String loadPreferencesName() {
+	    	SharedPreferences preferences =
+	    			getSharedPreferences("Settings", Context.MODE_PRIVATE);
+	    	String nombre=preferences.getString("nombre", "");
+	    	return nombre;
 		};
-		return null;
-	}
-	
+	};
 }
