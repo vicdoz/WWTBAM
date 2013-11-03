@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -45,7 +46,6 @@ public class SettingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
 		setContentView(R.layout.activity_settings);
 		spinnerAyudas = (Spinner) findViewById(R.id.spinnerAyudas);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_ayudas, android.R.layout.simple_spinner_item);
@@ -57,7 +57,7 @@ public class SettingsActivity extends Activity {
 		
 		editTextNombre = (EditText) findViewById(R.id.nombre);
 		editTextFriend = (EditText) findViewById(R.id.editTextFriend);
-		
+		Log.v("victor", "inicio settings");
 		// Color del texto segun la API
 		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
 		if (currentapiVersion <= android.os.Build.VERSION_CODES.GINGERBREAD){
@@ -124,13 +124,16 @@ public class SettingsActivity extends Activity {
 	View.OnClickListener handlerAddFriend = new View.OnClickListener() {
 
         public void onClick(View v) {
-        	register_friend();
+			Log.v("victor", "click");
+        	new register_friend().execute();
+			Log.v("victor", " fin click");
         }
 };
-private void register_friend(){
-	register=new AsyncTask<Void,Void,Boolean>() {
-		@Override
+
+		
+	private class register_friend extends AsyncTask<Void, Void, Boolean>{
 		protected Boolean doInBackground(Void... params) {
+			Log.v("victor", "inicio registro");
 			String url = "http://wwtbamandroid.appspot.com/rest/friends";
         	HttpClient client = new DefaultHttpClient();
         	HttpPost request = new HttpPost(url);
@@ -153,19 +156,17 @@ private void register_friend(){
 			}
         	
         	try {
-        		Toast.makeText(getApplicationContext(), "Trying to save", Toast.LENGTH_LONG).show();
-				HttpResponse response = client.execute(request);
-				Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
-			} catch (ClientProtocolException e) {
+        		HttpResponse response = client.execute(request);
+				} catch (ClientProtocolException e) {
 				e.printStackTrace();
 				return false;
 			} catch (IOException e) {
 				e.printStackTrace();
 				return false;
 			}
+        	Log.v("victor", "fin registro");
         	return true;
         };
 	};
-};
 }
 

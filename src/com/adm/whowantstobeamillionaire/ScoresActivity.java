@@ -82,6 +82,16 @@ tabs.setCurrentTab(0);*/
 		SimpleAdapter adaptador = new SimpleAdapter(this, listaPuntuaciones, R.layout.puntuacion,
 		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
 		list.setAdapter(adaptador);
+		/*Para cargar las puntuaciones de los amigos
+		tabs.setCurrentTab(1);
+		ListView list_friends = (ListView) findViewById(R.id.puntuacionesListaAmigos);
+
+		ArrayList<HashMap<String, String>> listaPuntuacionesAmigos = new ArrayList<HashMap<String, String>>();
+		listaPuntuacionesAmigos=getScores();
+		SimpleAdapter adaptadorAmigos = new SimpleAdapter(this, listaPuntuaciones, R.layout.puntuacion,
+		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
+		list_friends.setAdapter(adaptadorAmigos);*/
+		
 		
 	}
 
@@ -142,12 +152,14 @@ tabs.setCurrentTab(0);*/
 	};
     
 
-	private void getScores(){
+	private ArrayList<HashMap<String, String>> getScores(){
 		InputStream puntuaciones=recibirPuntuaciones();
 		Gson gson = new Gson();
 		Reader reader = new InputStreamReader(puntuaciones);
 		HighScoreList hsl = gson.fromJson(reader, HighScoreList.class);
-		List<HighScore> results =hsl.getScores();
+		ArrayList<HashMap<String, String>> results=hsl.getScoresAsArrayList();
+		
+		return results;
 	};
 	
 	
