@@ -12,28 +12,28 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
+
 import android.R.drawable;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -185,9 +185,7 @@ public class PlayActivity extends Activity {
 	        	
 	        	MyHelper db=new MyHelper(getApplicationContext());
 	        	
-	        	SharedPreferences preferences =
-	        			getSharedPreferences("Settings", Context.MODE_PRIVATE);
-	        	String nombre=preferences.getString("nombre", "");
+	        	String nombre=loadPreferencesName();
 	        	db.insertarPuntuacion(nombre, puntuacion);
 	        	Toast.makeText(getApplicationContext(), "Fin partida "+nombre+" puntuacion: "+puntuacion, Toast.LENGTH_LONG).show();		        	
 	        	//Borrado de preferencias
@@ -195,26 +193,8 @@ public class PlayActivity extends Activity {
 	        	SharedPreferences settings = getApplicationContext().getSharedPreferences("var", Context.MODE_PRIVATE);
 	        	settings.edit().clear().commit();
 	        	
-	        	// PUT en el servidor HTTP
-	        	HttpClient client = new DefaultHttpClient();
-	        	HttpPut request = new HttpPut("http://wwtbamandroid.appspot.com/rest/highscores");
-	        	List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-	        	pairs.add(new BasicNameValuePair("key", "value"));
-	        	try {
-					request.setEntity(new UrlEncodedFormEntity(pairs));
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        	try {
-					HttpResponse response = client.execute(request);
-				} catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	        	//Actualiza puntuación en el servidor
+	        	new updateScore().execute(puntuacion);
 	        	
 	        	// Acaba la actividad play y muestra las puntuaciones
 	        	startActivity(new Intent(PlayActivity.this, ScoresActivity.class));
@@ -596,6 +576,47 @@ public class PlayActivity extends Activity {
 	    public void run() {
 	    	fin_partida(false);
 	    }
+	};
+	private class updateScore extends AsyncTask<Integer, Void, Boolean>{
+		protected Boolean doInBackground(Integer... score) {
+			Log.v("victor", "inicio actualización score");
+			String url = "http://wwtbamandroid.appspot.com/rest/highscores";
+        	HttpClient client = new DefaultHttpClient();
+        	HttpPut request = new HttpPut(url);
+        	
+
+        	    		
+        	String nombre=loadPreferencesName();
+        	List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+        	pairs.add(new BasicNameValuePair(nombre, score.toString()));
+        	
+        	try {
+				request.setEntity(new UrlEncodedFormEntity(pairs));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				return false;
+			}
+        	
+        	try {
+        		HttpResponse response = client.execute(request);
+				} catch (ClientProtocolException e) {
+				e.printStackTrace();
+				return false;
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+        	Log.v("victor", "fin actualización score");
+        	return true;
+        }
+
+
+	};
+	private String loadPreferencesName() {
+    	SharedPreferences preferences =
+    			getSharedPreferences("Settings", Context.MODE_PRIVATE);
+    	String nombre=preferences.getString("nombre", "");
+    	return nombre;
 	};
 
 }
