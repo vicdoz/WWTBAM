@@ -57,7 +57,6 @@ public class SettingsActivity extends Activity {
 		
 		editTextNombre = (EditText) findViewById(R.id.nombre);
 		editTextFriend = (EditText) findViewById(R.id.editTextFriend);
-		Log.v("victor", "inicio settings");
 		// Color del texto segun la API
 		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
 		if (currentapiVersion <= android.os.Build.VERSION_CODES.GINGERBREAD){
@@ -124,16 +123,14 @@ public class SettingsActivity extends Activity {
 	View.OnClickListener handlerAddFriend = new View.OnClickListener() {
 
         public void onClick(View v) {
-			Log.v("victor", "click");
         	new register_friend().execute();
-			Log.v("victor", " fin click");
         }
 };
 
 		
 	private class register_friend extends AsyncTask<Void, Void, Boolean>{
 		protected Boolean doInBackground(Void... params) {
-			Log.v("victor", "inicio registro");
+			
 			String url = "http://wwtbamandroid.appspot.com/rest/friends";
         	HttpClient client = new DefaultHttpClient();
         	HttpPost request = new HttpPost(url);
@@ -146,7 +143,8 @@ public class SettingsActivity extends Activity {
     		String user = text.getText().toString();
         	
         	List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-        	pairs.add(new BasicNameValuePair(user, friend));
+        	pairs.add(new BasicNameValuePair("name", user));
+        	pairs.add(new BasicNameValuePair("friend_name",friend));
         	
         	try {
 				request.setEntity(new UrlEncodedFormEntity(pairs));
@@ -164,7 +162,7 @@ public class SettingsActivity extends Activity {
 				e.printStackTrace();
 				return false;
 			}
-        	Log.v("victor", "fin registro");
+
         	return true;
         };
 	};
