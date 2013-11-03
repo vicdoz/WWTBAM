@@ -194,7 +194,7 @@ public class PlayActivity extends Activity {
 	        	settings.edit().clear().commit();
 	        	
 	        	//Actualiza puntuación en el servidor
-	        	new updateScore().execute(puntuacion);
+	        	new updateScore().execute(String.valueOf(puntuacion));
 	        	
 	        	// Acaba la actividad play y muestra las puntuaciones
 	        	startActivity(new Intent(PlayActivity.this, ScoresActivity.class));
@@ -577,8 +577,8 @@ public class PlayActivity extends Activity {
 	    	fin_partida(false);
 	    }
 	};
-	private class updateScore extends AsyncTask<Integer, Void, Boolean>{
-		protected Boolean doInBackground(Integer... score) {
+	private class updateScore extends AsyncTask<String, Void, Boolean>{
+		protected Boolean doInBackground(String... params) {
 			Log.v("victor", "inicio actualización score");
 			String url = "http://wwtbamandroid.appspot.com/rest/highscores";
         	HttpClient client = new DefaultHttpClient();
@@ -588,9 +588,12 @@ public class PlayActivity extends Activity {
         	    		
         	String nombre=loadPreferencesName();
         	List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-        	pairs.add(new BasicNameValuePair(nombre, score.toString()));
+        	pairs.add(new BasicNameValuePair("name", nombre));
+        	pairs.add(new BasicNameValuePair("score", params[0]));
+        	
         	
         	try {
+        		
 				request.setEntity(new UrlEncodedFormEntity(pairs));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
