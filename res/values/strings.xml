@@ -71,6 +71,8 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="NoHelp">No helps remaining</string>
     <string name="deleteScore">Delete local scores</string>
-
-
+    <string name="backAndContinue">Continue</string>
+    <string name="backAndNotSave">Exit without saving</string>
+    <string name="backAndPause">Pause play</string>
+	<string name="batteryLow">Low battery</string>
 </resources>

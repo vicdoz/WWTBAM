@@ -3,10 +3,8 @@ package com.adm.whowantstobeamillionaire;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -18,17 +16,20 @@ import android.R.drawable;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.Window;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -37,33 +38,17 @@ public class ScoresActivity extends Activity {
 	TabHost tabs;
 	ListView list_friends;
 	SimpleAdapter adaptadorAmigos;
+	Utiles utiles;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
+		this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_scores);
+		ScoresActivity.this.setProgressBarIndeterminateVisibility(false);
 		
-		/*Resources res = getResources();
- 
-TabHost tabs=(TabHost)findViewById(android.R.id.tabhost);
-tabs.setup();
- 
-TabHost.TabSpec spec=tabs.newTabSpec("mitab1");
-spec.setContent(R.id.tab1);
-spec.setIndicator("",
-    res.getDrawable(android.R.drawable.ic_btn_speak_now));
-tabs.addTab(spec);
- 
-spec=tabs.newTabSpec("mitab2");
-spec.setContent(R.id.tab2);
-spec.setIndicator("TAB2",
-    res.getDrawable(android.R.drawable.ic_dialog_map));
-tabs.addTab(spec);
- 
-tabs.setCurrentTab(0);*/
 		
 		tabs = (TabHost)findViewById(android.R.id.tabhost);
 		tabs.setup();
@@ -153,7 +138,10 @@ tabs.setCurrentTab(0);*/
     
 
 	private void getScores(){
-		new recibirPuntuaciones().execute();
+		if(isConnected()) new recibirPuntuaciones().execute();
+		else Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_LONG).show();		        	
+    	
+		
 	};
 	
 	
@@ -163,8 +151,9 @@ tabs.setCurrentTab(0);*/
 		InputStream a;
 		StringBuilder sb;
 		protected String doInBackground(Void...params) {
+			ScoresActivity.this.setProgressBarIndeterminateVisibility(true);
 			HttpClient httpClient = new DefaultHttpClient();
-			HttpGet paquete =new HttpGet("http://wwtbamandroid.appspot.com/rest/highscores?name="+loadPreferencesName()); 	
+			HttpGet paquete =new HttpGet(getResources().getString(R.string.url_highScores)+"?name="+loadPreferencesName()); 	
 			try
 			{
 			        HttpResponse resp = httpClient.execute(paquete);
@@ -189,26 +178,24 @@ tabs.setCurrentTab(0);*/
 			}
 			return null;
 		}
-
+		
+		protected void onPreExecute(){
+			
+		}
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			Gson gson = new Gson();
 			
 			HighScoreList hsl = gson.fromJson(result, HighScoreList.class);
-			ArrayList<HashMap<String, String>> results=hsl.getScoresAsArrayList(loadPreferencesName());
+			ArrayList<HashMap<String, String>> results=hsl.getScoresAsArrayList();
 			SimpleAdapter adaptadorAmigos = new SimpleAdapter(getApplicationContext(), results, R.layout.puntuacion,
 		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
-		list_friends.setAdapter(adaptadorAmigos);
+			list_friends.setAdapter(adaptadorAmigos);
+			ScoresActivity.this.setProgressBarIndeterminateVisibility(false);
 		
 			
 		}
-
-		@Override
-		protected void onProgressUpdate(Void... values) {
-			// TODO Auto-generated method stub
-			super.onProgressUpdate(values);
-		};
 		
 		private String loadPreferencesName() {
 	    	SharedPreferences preferences =
@@ -217,4 +204,13 @@ tabs.setCurrentTab(0);*/
 	    	return nombre;
 		};
 	};
+	public  boolean isConnected() {
+		/**
+		 * Comprueba si hay conexión a la red.
+		 * @return True o false dependiendo si hay conexión.
+		 */
+		ConnectivityManager manager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+		NetworkInfo info = manager.getActiveNetworkInfo();
+		return ((info != null) && (info.isConnected()));
+	}
 }

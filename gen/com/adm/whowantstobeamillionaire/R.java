@@ -135,6 +135,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int autor=0x7f07000c;
         public static final int autor_josep=0x7f07000e;
         public static final int autor_victor=0x7f07000d;
+        public static final int backAndContinue=0x7f07002d;
+        public static final int backAndNotSave=0x7f07002e;
+        public static final int backAndPause=0x7f07002f;
+        public static final int batteryLow=0x7f070030;
         public static final int copyright=0x7f070011;
         public static final int deleteScore=0x7f07002c;
         public static final int descripcion_header=0x7f07000a;
@@ -173,6 +177,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int titulo_question=0x7f070008;
         public static final int titulo_scores=0x7f070005;
         public static final int titulo_settings=0x7f070006;
+        public static final int url_friend=0x7f070031;
+        public static final int url_highScores=0x7f070032;
     }
     public static final class style {
         /** 
