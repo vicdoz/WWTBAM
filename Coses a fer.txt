@@ -2,7 +2,6 @@
 DATA LIMIT: 8 NOV - 12:00
 ------------------------------------------------
 A fer:
-	+ Mostrar ProgressBar <-No tenim finestra de titol!!
 	-Revisar layouts
 	-vigilar tema
 	-El networking  comprovar si funciona de eixa manera tambe en 2.2.s

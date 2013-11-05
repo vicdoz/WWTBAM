@@ -76,4 +76,5 @@
     <string name="backAndPause">Pause play</string>
 	<string name="batteryLow">Low battery</string>
 	<string name="userAdded">New friend added correctly</string>
+	<string name="downloadScores">Downloading scores</string>
 </resources>

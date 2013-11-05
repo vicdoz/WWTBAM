@@ -76,5 +76,5 @@
     <string name="backAndPause">Pausar partida</string>
 	<string name="batteryLow">Bateria baja</string>
 	<string name="userAdded">Nuevo amigo añadido correctamente</string>
-
+	<string name="downloadScores">Descargando puntuaciones</string>
 </resources>

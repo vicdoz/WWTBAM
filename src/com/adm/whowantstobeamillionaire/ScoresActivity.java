@@ -85,6 +85,10 @@ public class ScoresActivity extends Activity {
 		
 		
 	}
+	public void onResume(){
+		super.onResume();
+		
+	}
 
 	
 	private ArrayList<HashMap<String, String>> LeerPuntuacionesDB() {
@@ -235,10 +239,10 @@ public class ScoresActivity extends Activity {
 	    switch (id) {
 	    case progress_bar_type:
 	        pDialog = new ProgressDialog(this);
-	        pDialog.setMessage("Downloading file. Please wait...");
+	        pDialog.setMessage(getResources().getString(R.string.downloadScores);
 	        pDialog.setIndeterminate(false);
 	        pDialog.setMax(100);
-	        pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+	        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 	        pDialog.setCancelable(true);
 	        pDialog.show();
 	        return pDialog;
