@@ -79,4 +79,6 @@
 	<string name="downloadScores">Descargando puntuaciones</string>
 	<string name="titleWarningExit">Está a punto de abandonar la partida</string>
 	<string name="warning">Advertencia</string>
+	<string name="finPartida">Fin partida:</string>
+	<string name="score">puntuacion</string>
 </resources>

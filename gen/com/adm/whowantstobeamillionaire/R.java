@@ -149,6 +149,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dummy_button=0x7f070029;
         public static final int dummy_content=0x7f07002a;
         public static final int file=0x7f070024;
+        public static final int finPartida=0x7f070035;
         public static final int hello_world=0x7f070002;
         public static final int jugadores_settings=0x7f070013;
         public static final int local_currency=0x7f070025;
@@ -166,6 +167,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int play_opcion_c=0x7f07001e;
         public static final int play_opcion_d=0x7f07001f;
         public static final int play_playing_for=0x7f07001a;
+        public static final int score=0x7f070036;
         public static final int tab_friends=0x7f070019;
         public static final int tab_local=0x7f070018;
         public static final int titleWarningExit=0x7f070033;
@@ -180,8 +182,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int titulo_question=0x7f070008;
         public static final int titulo_scores=0x7f070005;
         public static final int titulo_settings=0x7f070006;
-        public static final int url_friend=0x7f070035;
-        public static final int url_highScores=0x7f070036;
+        public static final int url_friend=0x7f070037;
+        public static final int url_highScores=0x7f070038;
         public static final int userAdded=0x7f070031;
         public static final int warning=0x7f070034;
     }
