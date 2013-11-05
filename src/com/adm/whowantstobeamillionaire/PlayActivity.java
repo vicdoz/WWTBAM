@@ -177,7 +177,7 @@ public class PlayActivity extends Activity {
 	        	
 	        	String nombre=loadPreferencesName();
 	        	db.insertarPuntuacion(nombre, puntuacion);
-	        	Toast.makeText(getApplicationContext(), "Fin partida "+nombre+" puntuacion: "+puntuacion, Toast.LENGTH_LONG).show();		        	
+	        	Toast.makeText(getApplicationContext(), R.string.finPartida +nombre+ R.string.score+": "+puntuacion, Toast.LENGTH_LONG).show();		        	
 	        	//Borrado de preferencias
 	        	actual=1;
 	        	borrarSharedPrefsVar();
@@ -300,8 +300,8 @@ public class PlayActivity extends Activity {
 			public boolean onKeyDown(int keyCode, KeyEvent event) {
 			    if (keyCode == KeyEvent.KEYCODE_BACK) {
 			    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			    	builder.setMessage("Esta a punto de abandonar la partida")
-			    	        .setTitle("Advertencia ")
+			    	builder.setMessage(R.string.titleWarningExit)
+			    	        .setTitle(R.string.warning)
 			    	        .setCancelable(false)
 			    	        
 			    	        .setNegativeButton(R.string.backAndNotSave,
@@ -600,7 +600,6 @@ public class PlayActivity extends Activity {
 			};
 			private class updateScore extends AsyncTask<String, Void, Boolean>{
 				protected Boolean doInBackground(String... params) {
-					Log.v("victor", "inicio actualización score");
 		        	HttpClient client = new DefaultHttpClient();
 		        	HttpPut request = new HttpPut(getResources().getString(R.string.url_highScores));
 		        	

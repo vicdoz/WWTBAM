@@ -54,9 +54,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main_logo=0x7f02000e;
     }
     public static final class id {
-        public static final int MenuItemDeleteScore=0x7f0b0032;
-        public static final int Nombre=0x7f0b0027;
-        public static final int button1=0x7f0b002b;
+        public static final int MenuItemDeleteScore=0x7f0b0027;
         public static final int buttonAddFriend=0x7f0b0020;
         public static final int buttonHeaderCreditos=0x7f0b0000;
         public static final int buttonHeaderPlay=0x7f0b000d;
@@ -68,33 +66,24 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonPlay=0x7f0b0009;
         public static final int buttonScores=0x7f0b000a;
         public static final int buttonSettings=0x7f0b000b;
-        public static final int creditosMenuItem=0x7f0b002d;
-        public static final int editText1=0x7f0b0029;
-        public static final int editText2=0x7f0b002c;
+        public static final int creditosMenuItem=0x7f0b0022;
         public static final int editTextFriend=0x7f0b0021;
         public static final int imageView1=0x7f0b000c;
         public static final int imageViewLogo=0x7f0b0008;
-        public static final int menuItem50=0x7f0b002f;
-        public static final int menuItemAudience=0x7f0b0030;
-        public static final int menuItemEnd=0x7f0b0031;
-        public static final int menuItemPhone=0x7f0b002e;
+        public static final int menuItem50=0x7f0b0024;
+        public static final int menuItemAudience=0x7f0b0025;
+        public static final int menuItemEnd=0x7f0b0026;
+        public static final int menuItemPhone=0x7f0b0023;
         public static final int nombre=0x7f0b001d;
         public static final int progressbarLoadScore=0x7f0b0018;
         public static final int puntuacionesListaAmigos=0x7f0b001c;
         public static final int puntuaciones_lista=0x7f0b001a;
-        public static final int score=0x7f0b0028;
-        public static final int spinner1=0x7f0b002a;
         public static final int spinnerAyudas=0x7f0b001f;
         public static final int tabFriends=0x7f0b001b;
         public static final int tabLocal=0x7f0b0019;
         public static final int tableRow1=0x7f0b0015;
         public static final int tableRow2=0x7f0b0016;
         public static final int textView1=0x7f0b0007;
-        public static final int textView2=0x7f0b0022;
-        public static final int textView21=0x7f0b0023;
-        public static final int textView22=0x7f0b0024;
-        public static final int textView3=0x7f0b0025;
-        public static final int textView4=0x7f0b0026;
         public static final int textViewAutores=0x7f0b0001;
         public static final int textViewAyudas=0x7f0b001e;
         public static final int textViewCopyright=0x7f0b0006;
@@ -112,10 +101,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_play=0x7f030002;
         public static final int activity_scores=0x7f030003;
         public static final int activity_settings=0x7f030004;
-        public static final int credits=0x7f030005;
-        public static final int play=0x7f030006;
-        public static final int puntuacion=0x7f030007;
-        public static final int settings=0x7f030008;
     }
     public static final class menu {
         public static final int creditos=0x7f0a0000;
@@ -149,6 +134,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dummy_button=0x7f070029;
         public static final int dummy_content=0x7f07002a;
         public static final int file=0x7f070024;
+        public static final int finPartida=0x7f070035;
         public static final int hello_world=0x7f070002;
         public static final int jugadores_settings=0x7f070013;
         public static final int local_currency=0x7f070025;
@@ -166,6 +152,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int play_opcion_c=0x7f07001e;
         public static final int play_opcion_d=0x7f07001f;
         public static final int play_playing_for=0x7f07001a;
+        public static final int score=0x7f070036;
         public static final int tab_friends=0x7f070019;
         public static final int tab_local=0x7f070018;
         public static final int titleWarningExit=0x7f070033;
@@ -180,8 +167,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int titulo_question=0x7f070008;
         public static final int titulo_scores=0x7f070005;
         public static final int titulo_settings=0x7f070006;
-        public static final int url_friend=0x7f070035;
-        public static final int url_highScores=0x7f070036;
+        public static final int url_friend=0x7f070037;
+        public static final int url_highScores=0x7f070038;
         public static final int userAdded=0x7f070031;
         public static final int warning=0x7f070034;
     }

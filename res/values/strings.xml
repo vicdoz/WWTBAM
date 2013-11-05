@@ -79,4 +79,6 @@
 	<string name="downloadScores">Downloading scores</string>
 	<string name="titleWarningExit">Are you sure to exit?</string>
 	<string name="warning">Warning</string>
+	<string name="finPartida">Game over:</string>
+	<string name="score">score</string>
 </resources>
