@@ -14,6 +14,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.R.drawable;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -39,6 +41,10 @@ public class ScoresActivity extends Activity {
 	ListView list_friends;
 	SimpleAdapter adaptadorAmigos;
 	Utiles utiles;
+	// Progress Dialog
+    private ProgressDialog pDialog;
+    // Progress dialog type (0 - for Horizontal progress bar)
+    public static final int progress_bar_type = 0; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +173,8 @@ public class ScoresActivity extends Activity {
 			         }
 			         //a.close();
 			         result=sb.toString();
-			         Log.d("victor", result);
+			         
+			        // publishProgress(""+(int)((total*100)/lenghtOfFile));
 			         return result;
 			        
 			         
@@ -179,9 +186,16 @@ public class ScoresActivity extends Activity {
 			return null;
 		}
 		
-		protected void onPreExecute(){
-			
-		}
+		
+	    /**
+	     * Before starting background thread
+	     * Show Progress Bar Dialog
+	     * */
+	    @Override
+	    protected void onPreExecute() {
+	        super.onPreExecute();
+	        showDialog(progress_bar_type);
+	    }
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
@@ -193,7 +207,7 @@ public class ScoresActivity extends Activity {
 		            new String[] {"Nombre", "score"}, new int[] {R.id.Nombre, R.id.score});
 			list_friends.setAdapter(adaptadorAmigos);
 			ScoresActivity.this.setProgressBarIndeterminateVisibility(false);
-		
+			dismissDialog(progress_bar_type);
 			
 		}
 		
@@ -213,4 +227,24 @@ public class ScoresActivity extends Activity {
 		NetworkInfo info = manager.getActiveNetworkInfo();
 		return ((info != null) && (info.isConnected()));
 	}
+	/**
+	 * Showing Dialog
+	 * */
+	@Override
+	protected Dialog onCreateDialog(int id) {
+	    switch (id) {
+	    case progress_bar_type:
+	        pDialog = new ProgressDialog(this);
+	        pDialog.setMessage("Downloading file. Please wait...");
+	        pDialog.setIndeterminate(false);
+	        pDialog.setMax(100);
+	        pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+	        pDialog.setCancelable(true);
+	        pDialog.show();
+	        return pDialog;
+	    default:
+	        return null;
+	    }
+	}
 }
+

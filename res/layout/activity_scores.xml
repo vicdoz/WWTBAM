@@ -12,7 +12,13 @@
         android:gravity="center|right"
         style="@style/TituloConSombra" 
         android:text="@string/titulo_scores" />
-
+	<ProgressBar
+	 android:layout_width="fill_parent"
+	 android:layout_height="wrap_content"
+	 style="?android:attr/progressBarStyleHorizontal"
+	 android:id="@+id/progressbarLoadScore"
+	 android:max="100"
+	 />
     <TabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"

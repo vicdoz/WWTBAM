@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
@@ -159,7 +160,16 @@ public class SettingsActivity extends Activity {
 			}
 
         	return true;
-        };
+        }
+
+		@Override
+		protected void onPostExecute(Boolean result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			Toast.makeText(getApplicationContext(), "R.string.userAdded", Toast.LENGTH_LONG).show();		        	
+        	
+		};
+        
 	};
 }
 

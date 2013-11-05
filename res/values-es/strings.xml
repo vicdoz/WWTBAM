@@ -75,5 +75,6 @@
     <string name="backAndNotSave">Salir sin guardar</string>
     <string name="backAndPause">Pausar partida</string>
 	<string name="batteryLow">Bateria baja</string>
+	<string name="userAdded">Nuevo amigo añadido correctamente</string>
 
 </resources>

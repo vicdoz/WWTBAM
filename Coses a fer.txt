@@ -2,14 +2,10 @@
 DATA LIMIT: 8 NOV - 12:00
 ------------------------------------------------
 A fer:
-
-	- Funcionalitat "Friend scores"
 	+ Mostrar ProgressBar <-No tenim finestra de titol!!
 	-Revisar layouts
 	-vigilar tema
-	-El networking  comprovar si funciona de eixa manera tambe en 2.2.
-
-	-Controlar todos los ciclos de vida.
+	-El networking  comprovar si funciona de eixa manera tambe en 2.2.s
 	-Controlar excepciones.
 
 ------------------------------------------------
@@ -131,3 +127,8 @@ FET VICTOR 3/11
 -comunciacio amb asyncTasks
 -comprobacio de red
 -Si quant inicies una partid no hi ha nom->obliguem a ficarlo en la finestra de settings.Sense nom no jugues, xq com despres es guarden y tot....
+
+	------------------------------------------------
+FET VICTOR 5/11
+------------------------------------------------
+-Agefit toast informant que el amic ha sigut afegit
