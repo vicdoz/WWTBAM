@@ -168,6 +168,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int play_playing_for=0x7f07001a;
         public static final int tab_friends=0x7f070019;
         public static final int tab_local=0x7f070018;
+        public static final int titleWarningExit=0x7f070033;
         public static final int title_activity_creditos=0x7f070016;
         public static final int title_activity_fullscreen_play=0x7f070028;
         public static final int title_activity_play=0x7f070027;
@@ -179,9 +180,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int titulo_question=0x7f070008;
         public static final int titulo_scores=0x7f070005;
         public static final int titulo_settings=0x7f070006;
-        public static final int url_friend=0x7f070033;
-        public static final int url_highScores=0x7f070034;
+        public static final int url_friend=0x7f070035;
+        public static final int url_highScores=0x7f070036;
         public static final int userAdded=0x7f070031;
+        public static final int warning=0x7f070034;
     }
     public static final class style {
         /** 

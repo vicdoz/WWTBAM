@@ -4,7 +4,7 @@ DATA LIMIT: 8 NOV - 12:00
 A fer:
 	-Revisar layouts
 	-vigilar tema
-	-El networking  comprovar si funciona de eixa manera tambe en 2.2.s
+	-El networking  comprovar si funciona de eixa manera tambe en 2.2(deuria de anar, en el mvl va perfecte)
 	-Controlar excepciones.
 
 ------------------------------------------------
@@ -131,3 +131,4 @@ FET VICTOR 3/11
 FET VICTOR 5/11
 ------------------------------------------------
 -Agefit toast informant que el amic ha sigut afegit
+-Agegit spinner 

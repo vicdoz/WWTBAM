@@ -77,4 +77,6 @@
 	<string name="batteryLow">Bateria baja</string>
 	<string name="userAdded">Nuevo amigo añadido correctamente</string>
 	<string name="downloadScores">Descargando puntuaciones</string>
+	<string name="titleWarningExit">Está a punto de abandonar la partida</string>
+	<string name="warning">Advertencia</string>
 </resources>

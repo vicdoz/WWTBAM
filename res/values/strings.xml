@@ -77,4 +77,6 @@
 	<string name="batteryLow">Low battery</string>
 	<string name="userAdded">New friend added correctly</string>
 	<string name="downloadScores">Downloading scores</string>
+	<string name="titleWarningExit">Are you sure to exit?</string>
+	<string name="warning">Warning</string>
 </resources>
