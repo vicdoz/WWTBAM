@@ -80,14 +80,14 @@ public class ScoresActivity extends Activity {
 		/*Para cargar las puntuaciones de los amigos*/
 		tabs.setCurrentTab(1);
 		list_friends = (ListView) findViewById(R.id.puntuacionesListaAmigos);
-		getScores();
+
 
 		
 		
 	}
 	public void onResume(){
 		super.onResume();
-		
+		getScores();
 	}
 
 	
@@ -239,7 +239,7 @@ public class ScoresActivity extends Activity {
 	    switch (id) {
 	    case progress_bar_type:
 	        pDialog = new ProgressDialog(this);
-	        pDialog.setMessage(getResources().getString(R.string.downloadScores);
+	        pDialog.setMessage(getResources().getString(R.string.downloadScores));
 	        pDialog.setIndeterminate(false);
 	        pDialog.setMax(100);
 	        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
