@@ -177,7 +177,7 @@ public class PlayActivity extends Activity {
 	        	
 	        	String nombre=loadPreferencesName();
 	        	db.insertarPuntuacion(nombre, puntuacion);
-	        	Toast.makeText(getApplicationContext(),getResources().getString(R.string.finPartida) +nombre+getResources().getString(R.string.score)+": "+puntuacion, Toast.LENGTH_LONG).show();		        	
+	        	Toast.makeText(getApplicationContext(),getResources().getString(R.string.finPartida) +nombre+"."+getResources().getString(R.string.score)+"= "+puntuacion, Toast.LENGTH_LONG).show();		        	
 	        	//Borrado de preferencias
 	        	actual=1;
 	        	borrarSharedPrefsVar();
