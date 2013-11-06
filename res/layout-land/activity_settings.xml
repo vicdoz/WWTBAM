@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/back">
+    
+    <Button
+        android:id="@+id/buttonHeaderSettings"
+        style="@style/TextoConSombra"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/header"
+        android:gravity="right|center"
+        android:text="@string/titulo_settings"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_settings"
+            android:textStyle="bold"
+            style="@style/TextoConSombra"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textColor="@android:color/white"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/textViewAyudas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            style="@style/TextoConSombra"
+            android:textStyle="bold"
+            android:text="@string/jugadores_settings"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/spinnerAyudas"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.3"
+            android:background="@android:color/background_light" 
+            style="@style/TextoConSombra"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp" >
+
+        <Button
+            android:id="@+id/buttonAddFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            style="@style/TextoConSombra"
+            android:textStyle="bold"
+            android:text="@string/add_friend_settings" />
+
+        <EditText
+            android:id="@+id/editTextFriend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textColor="@android:color/white"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+</LinearLayout>

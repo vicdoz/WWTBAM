@@ -38,20 +38,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class drawable {
         public static final int back=0x7f020000;
-        public static final int back_land=0x7f020001;
-        public static final int button_opcion=0x7f020002;
-        public static final int button_opcion_correct=0x7f020003;
-        public static final int button_opcion_deleted=0x7f020004;
-        public static final int button_opcion_selected=0x7f020005;
-        public static final int button_opcion_wrong=0x7f020006;
-        public static final int button_settings=0x7f020007;
-        public static final int button_xhdpi=0x7f020008;
-        public static final int fondo=0x7f020009;
-        public static final int header=0x7f02000a;
-        public static final int header_xxhdpi=0x7f02000b;
-        public static final int ic_launcher=0x7f02000c;
-        public static final int icon=0x7f02000d;
-        public static final int main_logo=0x7f02000e;
+        public static final int button_opcion=0x7f020001;
+        public static final int button_opcion_correct=0x7f020002;
+        public static final int button_opcion_deleted=0x7f020003;
+        public static final int button_opcion_selected=0x7f020004;
+        public static final int button_opcion_wrong=0x7f020005;
+        public static final int header=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int icon_50=0x7f020008;
+        public static final int icon_50_used=0x7f020009;
+        public static final int icon_audience=0x7f02000a;
+        public static final int icon_audience_used=0x7f02000b;
+        public static final int icon_exit=0x7f02000c;
+        public static final int icon_phone=0x7f02000d;
+        public static final int icon_phone_used=0x7f02000e;
+        public static final int main_logo=0x7f02000f;
     }
     public static final class id {
         public static final int MenuItemDeleteScore=0x7f0b0031;

@@ -82,6 +82,12 @@ public class PlayActivity extends Activity {
 		 opcionD.setOnClickListener(handlerOpcionD);
 		 actual=1;
 		 
+		 statusTelefono = 0;
+		 status50 = 0;
+		 statusAudience = 0;
+		 
+		 saveData();
+		 
 		 cliente = new DefaultHttpClient();
 	}
 	@Override
@@ -207,20 +213,20 @@ public class PlayActivity extends Activity {
 		getMenuInflater().inflate(R.menu.play, menu);
 		
 		menuItemPhone = menu.findItem(R.id.menuItemPhone);
-		menuItemPhone.setIcon(drawable.ic_menu_call);
+		menuItemPhone.setIcon(R.drawable.icon_phone);
 		menuItemPhone.setOnMenuItemClickListener(handlermenuItemPhone);
 		
 		menuItem50 = menu.findItem(R.id.menuItem50);
-		menuItem50.setIcon(drawable.ic_partial_secure);
+		menuItem50.setIcon(R.drawable.icon_50);
 		menuItem50.setOnMenuItemClickListener(handlermenuItem50);
 		
 		menuItemAudience = menu.findItem(R.id.menuItemAudience);
-		menuItemAudience.setIcon(drawable.ic_menu_agenda);
+		menuItemAudience.setIcon(R.drawable.icon_audience);
 		menuItemAudience.setOnMenuItemClickListener(handlermenuItemAudience);	
 		
 		menuItemEnd = menu.findItem(R.id.menuItemEnd);
-		menuItemEnd.setIcon(drawable.ic_input_delete);
-		menuItemEnd.setOnMenuItemClickListener(handlermenuItemEnd);	
+		menuItemEnd.setIcon(R.drawable.icon_exit);
+		menuItemEnd.setOnMenuItemClickListener(handlermenuItemEnd);
 		
 		
 		return true;
@@ -228,25 +234,26 @@ public class PlayActivity extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 	    
-		menuItemPhone = menu.findItem(R.id.menuItemPhone);
-		menuItemPhone.setIcon(drawable.ic_menu_call);
+		/*menuItemPhone = menu.findItem(R.id.menuItemPhone);
+		menuItemPhone.setIcon(R.drawable.icon_phone);
 		menuItemPhone.setOnMenuItemClickListener(handlermenuItemPhone);
 		
 		menuItem50 = menu.findItem(R.id.menuItem50);
-		menuItem50.setIcon(drawable.ic_partial_secure);
+		menuItem50.setIcon(R.drawable.icon_50);
 		menuItem50.setOnMenuItemClickListener(handlermenuItem50);
 		
 		menuItemAudience = menu.findItem(R.id.menuItemAudience);
-		menuItemAudience.setIcon(drawable.ic_menu_agenda);
+		if(statusAudience == 0){
+			menuItemAudience.setIcon(R.drawable.icon_audience);
+		}else{
+			menuItemAudience.setIcon(R.drawable.icon_audience_used);
+		}
 		menuItemAudience.setOnMenuItemClickListener(handlermenuItemAudience);	
 		
 		menuItemEnd = menu.findItem(R.id.menuItemEnd);
-		menuItemEnd.setIcon(drawable.ic_input_delete);
-		menuItemEnd.setOnMenuItemClickListener(handlermenuItemEnd);	
+		menuItemEnd.setIcon(R.drawable.icon_exit);
+		menuItemEnd.setOnMenuItemClickListener(handlermenuItemEnd);	*/
 		
-		//if(!bUsadoTelef)menuItemPhone.setEnabled(true);
-		//if(!bUsado50)menuItem50.setEnabled(true);
-		//if(!bUsadoAudience)menuItemAudience.setEnabled(true);
 		if(statusTelefono==0)menuItemPhone.setEnabled(true);
 		if(statusAudience==0)menuItemAudience.setEnabled(true);
 		if(status50==0)menuItem50.setEnabled(true);
@@ -259,10 +266,11 @@ public class PlayActivity extends Activity {
 		@Override
 		public boolean onMenuItemClick(MenuItem arg0) {
 			nAyudasDisponibles--;
-			//bUsadoTelef=true;
-			statusTelefono=actual;
+			
+			menuItemPhone.setIcon(R.drawable.icon_phone_used);
 			menuItemPhone.setEnabled(false);
 			if(nAyudasDisponibles>0){
+				statusTelefono=actual;
 				aplicarComodinTelefono();
 			}else{
 				Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
@@ -274,10 +282,10 @@ public class PlayActivity extends Activity {
 		@Override
 		public boolean onMenuItemClick(MenuItem arg0) {
 			nAyudasDisponibles--;
+			menuItem50.setIcon(R.drawable.icon_50_used);
 			menuItem50.setEnabled(false);
-			//bUsado50=true;
-			status50=actual;
 			if(nAyudasDisponibles>0){
+				status50=actual;
 				aplicarComodin50();
 			}else{ 
 				Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();
@@ -289,10 +297,10 @@ public class PlayActivity extends Activity {
 		@Override
 		public boolean onMenuItemClick(MenuItem arg0) {
 			nAyudasDisponibles--;
-			//bUsadoAudience=true;
-			statusAudience=actual;
+			menuItemAudience.setIcon(R.drawable.icon_audience_used);
 			menuItemAudience.setEnabled(false);
 			if(nAyudasDisponibles>0){
+				statusAudience=actual;
 				aplicarComodinAudience();
 			}else{
 				Toast.makeText(getApplicationContext(), R.string.NoHelp, Toast.LENGTH_LONG).show();		        	
