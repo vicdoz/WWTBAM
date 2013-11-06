@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import android.util.Log;
-
 public class HighScoreList {
 
 	private List<HighScore> scores;
@@ -14,8 +12,10 @@ public class HighScoreList {
 	public List<HighScore> getScores() {
 		return scores;
 	}
-	public ArrayList<HashMap<String, String>> getScoresAsArrayList(String nombrePropio) {
-
+	public ArrayList<HashMap<String, String>> getScoresAsArrayList() {
+		/**
+		 * Devuelve un arrayList con las puntuaciones de los amigos excepto la propia.
+		 */
 		ArrayList<HashMap<String, String>> listaPuntuacionesAmigos = new ArrayList<HashMap<String, String>>();
 		// Obtenemos un Iterador y recorremos la lista.
 		Iterator<HighScore> iter = scores.iterator();
@@ -27,12 +27,11 @@ public class HighScoreList {
 			nombre=h.getName();
 			aux=h.getScoring();
 			puntua=String.valueOf(aux);
-			if(!nombre.equals(nombrePropio)){
-				map.put("Nombre", nombre);
-				map.put("score", puntua);
-				//los vamos insertando en el arraylist
-				listaPuntuacionesAmigos.add(map);
-			}
+			map.put("Nombre", nombre);
+			map.put("score", puntua);
+			//los vamos insertando en el arraylist
+			listaPuntuacionesAmigos.add(map);
+			
 		}
 		return listaPuntuacionesAmigos;
 		

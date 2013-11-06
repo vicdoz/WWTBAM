@@ -2,21 +2,10 @@
 DATA LIMIT: 8 NOV - 12:00
 ------------------------------------------------
 A fer:
-
-- Funcionalitat "Friend scores"
-	+ Carregar puntuacions
-	+ Mostrar ProgressBar
-
-- El networking que donen en el butlletí funciona per a 2.2 pero a partir de honeycomb
-  s'ha de fer el networking en un fil diferent al principal. Queda com a pendent el
-  fer-ho en un AsyncThread per a que funcione en els nostres dispositius i comprovar
-  si funciona de eixa manera tambe en 2.2.
- 
-- Quant acabes una partida sino hi ha nom en settings, cridar a eixa activitat???
-
-- Al canviar al tema per defecte tornava a estar tot en el tema de android 4.* , pero
-  al efegir un element nou en layout-land ara apareix el tema de gingerbread sense
-  haver tocat el tema per defecte. :S
+	-Revisar layouts
+	-vigilar tema
+	-El networking  comprovar si funciona de eixa manera tambe en 2.2(deuria de anar, en el mvl va perfecte)
+	-Controlar excepciones.
 
 ------------------------------------------------
 FET VICTOR 22/10:
@@ -130,3 +119,16 @@ FET JOSEP 2/11
 - Comprovat en el emulador:
 	+ dispositiu LDPI i MDPI:	El tamany dels elements es correcte.
 	+ dispositiu XHDPI: 		El tamany dels elements es correcte.
+	
+	------------------------------------------------
+FET VICTOR 3/11
+------------------------------------------------
+-comunciacio amb asyncTasks
+-comprobacio de red
+-Si quant inicies una partid no hi ha nom->obliguem a ficarlo en la finestra de settings.Sense nom no jugues, xq com despres es guarden y tot....
+
+	------------------------------------------------
+FET VICTOR 5/11
+------------------------------------------------
+-Agefit toast informant que el amic ha sigut afegit
+-Agegit spinner 

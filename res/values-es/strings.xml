@@ -36,7 +36,7 @@
     <string name="play_item_phone">"Telefono"</string>
     <string name="play_item_50">"50%"</string>
     <string name="play_item_audience">"Audiencia"</string>
-    <string name="play_item_end">"Terminar"</string>
+    <string name="play_item_end">"Retirarse"</string>
 	<string name="file">questions0001_es</string>
 	<string name="local_currency">" €"</string>
     <string-array name="array_ayudas">
@@ -71,6 +71,14 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="NoHelp">Sin ayudas</string>
     <string name="deleteScore">Borrar puntuaciones locales</string>
-
-
+    <string name="backAndContinue">Continuar</string>
+    <string name="backAndNotSave">Salir sin guardar</string>
+    <string name="backAndPause">Pausar partida</string>
+	<string name="batteryLow">Bateria baja</string>
+	<string name="userAdded">Nuevo amigo añadido correctamente</string>
+	<string name="downloadScores">Descargando puntuaciones</string>
+	<string name="titleWarningExit">Está a punto de abandonar la partida</string>
+	<string name="warning">Advertencia</string>
+	<string name="finPartida">Fin partida:</string>
+	<string name="score">puntuacion</string>
 </resources>

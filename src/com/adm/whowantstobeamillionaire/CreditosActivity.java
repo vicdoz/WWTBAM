@@ -1,3 +1,10 @@
+//===================== Autores =====================
+//
+// Ahuir Dominguez, Victor		vicahdo@fiv.upv.es
+// Tomas Sendra, Josep Maria	jotosen@fiv.upv.es
+//
+//===================== ADM-2013 ====================
+
 package com.adm.whowantstobeamillionaire;
 
 import android.os.Bundle;
@@ -10,9 +17,7 @@ public class CreditosActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
 		setContentView(R.layout.activity_creditos);
 	}
 

@@ -1,3 +1,10 @@
+//===================== Autores =====================
+//
+// Ahuir Dominguez, Victor		vicahdo@fiv.upv.es
+// Tomas Sendra, Josep Maria	jotosen@fiv.upv.es
+//
+//===================== ADM-2013 ====================
+
 package com.adm.whowantstobeamillionaire;
 
 import java.io.IOException;
@@ -5,24 +12,21 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -30,6 +34,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
@@ -66,7 +71,6 @@ public class SettingsActivity extends Activity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		restoreData();
 	}
@@ -79,7 +83,6 @@ public class SettingsActivity extends Activity {
 	}
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		saveData();
 		super.onPause();
 	}
@@ -127,11 +130,14 @@ public class SettingsActivity extends Activity {
 
 		
 	private class register_friend extends AsyncTask<Void, Void, Boolean>{
+		/**
+		 * Registra a un amigo
+		 */
 		protected Boolean doInBackground(Void... params) {
 			
-			String url = "http://wwtbamandroid.appspot.com/rest/friends";
+
         	HttpClient client = new DefaultHttpClient();
-        	HttpPost request = new HttpPost(url);
+        	HttpPost request = new HttpPost(getResources().getString(R.string.url_friend));
         	
         	// Obtener nombre del amigo a partir del EditTextFriend
         	String friend = editTextFriend.getText().toString();
@@ -151,7 +157,7 @@ public class SettingsActivity extends Activity {
 				return false;
 			}	
         	try {
-        		HttpResponse response = client.execute(request);
+        		client.execute(request);
 				} catch (ClientProtocolException e) {
 				e.printStackTrace();
 				return false;
@@ -161,7 +167,16 @@ public class SettingsActivity extends Activity {
 			}
 
         	return true;
-        };
+        }
+
+		@Override
+		protected void onPostExecute(Boolean result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			Toast.makeText(getApplicationContext(), "R.string.userAdded", Toast.LENGTH_LONG).show();		        	
+        	
+		};
+        
 	};
 }
 

@@ -16,7 +16,6 @@ public class HighScore implements Comparable<HighScore>{
 
 	@Override
 	public int compareTo(HighScore o) {
-		// TODO Auto-generated method stub
 		if (this.getScoring() > o.getScoring()) {
 			return 1;
 		}
