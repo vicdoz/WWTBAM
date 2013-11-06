@@ -54,7 +54,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main_logo=0x7f02000e;
     }
     public static final class id {
-        public static final int MenuItemDeleteScore=0x7f0b0027;
+        public static final int MenuItemDeleteScore=0x7f0b0029;
+        public static final int Nombre=0x7f0b0022;
         public static final int buttonAddFriend=0x7f0b0020;
         public static final int buttonHeaderCreditos=0x7f0b0000;
         public static final int buttonHeaderPlay=0x7f0b000d;
@@ -66,18 +67,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonPlay=0x7f0b0009;
         public static final int buttonScores=0x7f0b000a;
         public static final int buttonSettings=0x7f0b000b;
-        public static final int creditosMenuItem=0x7f0b0022;
+        public static final int creditosMenuItem=0x7f0b0024;
         public static final int editTextFriend=0x7f0b0021;
         public static final int imageView1=0x7f0b000c;
         public static final int imageViewLogo=0x7f0b0008;
-        public static final int menuItem50=0x7f0b0024;
-        public static final int menuItemAudience=0x7f0b0025;
-        public static final int menuItemEnd=0x7f0b0026;
-        public static final int menuItemPhone=0x7f0b0023;
+        public static final int menuItem50=0x7f0b0026;
+        public static final int menuItemAudience=0x7f0b0027;
+        public static final int menuItemEnd=0x7f0b0028;
+        public static final int menuItemPhone=0x7f0b0025;
         public static final int nombre=0x7f0b001d;
         public static final int progressbarLoadScore=0x7f0b0018;
         public static final int puntuacionesListaAmigos=0x7f0b001c;
         public static final int puntuaciones_lista=0x7f0b001a;
+        public static final int score=0x7f0b0023;
         public static final int spinnerAyudas=0x7f0b001f;
         public static final int tabFriends=0x7f0b001b;
         public static final int tabLocal=0x7f0b0019;
@@ -101,6 +103,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_play=0x7f030002;
         public static final int activity_scores=0x7f030003;
         public static final int activity_settings=0x7f030004;
+        public static final int puntuacion=0x7f030005;
     }
     public static final class menu {
         public static final int creditos=0x7f0a0000;
